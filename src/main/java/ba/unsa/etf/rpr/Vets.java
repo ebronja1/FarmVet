@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import java.util.Objects;
+
 public class Vets {
     private int id;
     private String name;
@@ -26,5 +28,18 @@ public class Vets {
         if (o == null || getClass() != o.getClass()) return false;
         Vets vets = (Vets) o;
         return id == vets.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Vets{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
