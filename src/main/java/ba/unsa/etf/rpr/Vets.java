@@ -1,7 +1,10 @@
 package ba.unsa.etf.rpr;
 
 import java.util.Objects;
-
+/**
+ * bean for Vets
+ * @author Emir Bronja
+ */
 public class Vets {
     private int id;
     private String name;

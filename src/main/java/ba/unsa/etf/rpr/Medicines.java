@@ -1,7 +1,10 @@
 package ba.unsa.etf.rpr;
 
 import java.util.Objects;
-
+/**
+ * bean for Medicines
+ * @author Emir Bronja
+ */
 public class Medicines {
     private int id;
     private String name;

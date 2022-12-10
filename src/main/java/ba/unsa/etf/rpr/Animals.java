@@ -1,7 +1,10 @@
 package ba.unsa.etf.rpr;
 
 import java.util.Objects;
-
+/**
+ * bean for Animals
+ * @author Emir Bronja
+ */
 public class Animals {
     private int id;
     private String name;
