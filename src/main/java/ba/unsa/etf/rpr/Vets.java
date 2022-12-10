@@ -19,4 +19,12 @@ public class Vets {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vets vets = (Vets) o;
+        return id == vets.id;
+    }
 }
