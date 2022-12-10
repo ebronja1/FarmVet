@@ -3,9 +3,9 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.Vets;
 
 /**
- * Dao interface for Category domain bean
+ * Dao interface for Vets bean
  *
- * @author Dino Keco
+ * @author Emir Bronja
  */
 public interface VetsDao extends Dao<Vets> {
 }
