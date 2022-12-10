@@ -28,4 +28,21 @@ public class Animals {
     public void setKind(String kind) {
         this.kind = kind;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animals animals = (Animals) o;
+        return id == animals.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Animals{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", kind='" + kind + '\'' +
+                '}';
+    }
+
 }
