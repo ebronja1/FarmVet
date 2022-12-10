@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr;
 
+import java.util.Objects;
+
 public class Animals {
     private int id;
     private String name;
@@ -44,5 +46,8 @@ public class Animals {
                 ", kind='" + kind + '\'' +
                 '}';
     }
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
 }
