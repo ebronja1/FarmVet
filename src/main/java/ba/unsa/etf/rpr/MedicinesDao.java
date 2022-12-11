@@ -18,12 +18,12 @@ public interface MedicinesDao extends Dao<Medicines> {
      * @param animal search string for quotes
      * @return list of quotes
      */
-    List<Medicines> searchByCategory(Animals animal);
+    List<Medicines> searchByAnimals(Animals animal);
     /**
      * Returns all medicines that contains given text.
      *
      * @param vet search string for quotes
      * @return list of quotes
      */
-    List<Medicines> searchByCategory(Vets vet);
+    List<Medicines> searchByVets(Vets vet);
 }
