@@ -37,6 +37,19 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
 
     @Override
     public Medicines add(Medicines item) {
+        String insert = "INSERT INTO medicines(name) VALUES(?)";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, item.getName());
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next(); // we know that there is one key
+            item.setId(rs.getInt(1)); //set id to return it back
+            return item;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 
