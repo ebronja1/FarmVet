@@ -17,7 +17,7 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public Vets getById(int id) {
-        String query = "SELECT * FROM categories WHERE id = ?";
+        String query = "SELECT * FROM animals WHERE id = ?";
         try{
             PreparedStatement stmt = this.connection.prepareStatement(query);
             stmt.setInt(1, id);
@@ -39,7 +39,7 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public Vets add(Vets item) {
-        String insert = "INSERT INTO categories(name) VALUES(?)";
+        String insert = "INSERT INTO animals(name) VALUES(?)";
         try{
             PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, item.getName());
@@ -57,12 +57,29 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public Vets update(Vets item) {
-        return null;
+        String insert = "UPDATE animals SET name = ? WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, item.getName());
+            stmt.setObject(2, item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
     public void delete(int id) {
-
+        String insert = "DELETE FROM animals WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
