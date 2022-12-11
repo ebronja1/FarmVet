@@ -8,6 +8,7 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
     private Connection connection;
 
     public MedicinesDaoSQLImpl(){
+
         try{
             this.connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7582258", "sql7582258", "m6JTHrdhjw");
         }catch (Exception e){
