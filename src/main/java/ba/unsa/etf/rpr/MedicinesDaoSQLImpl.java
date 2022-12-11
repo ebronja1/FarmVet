@@ -103,7 +103,7 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
 
     @Override
     public List<Medicines> searchByAnimals(Animals animal) {
-        String query = "SELECT * FROM medicines m, animals a WHERE a.id = m.animal_id AND animal = ?";
+        String query = "SELECT * FROM medicines WHERE animal_id = ?";
         try {
             PreparedStatement stmt = this.connection.prepareStatement(query);
             stmt.setInt(1, animal.getId());
@@ -126,6 +126,24 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
 
     @Override
     public List<Medicines> searchByVets(Vets vet) {
+        String query = "SELECT * FROM medicines WHERE vet_id = ?";
+        try {
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1, vet.getId());
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Medicines> medicinesList = new ArrayList<>();
+            while (rs.next()) {
+                Medicines m = new Medicines();
+                m.setId(rs.getInt(1));
+                m.setName(rs.getString(2));
+                m.setVet_id(rs.getInt(3));
+                m.setAnimal_id(rs.getInt(4));
+                medicinesList.add(m);
+            }
+            return medicinesList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }
