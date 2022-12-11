@@ -72,11 +72,33 @@ public class AnimalsDaoSQLImpl implements AnimalsDao {
 
     @Override
     public void delete(int id) {
-
+        String insert = "DELETE FROM animals WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
     public List<Animals> getAll() {
-        return null;
+        String query = "SELECT * FROM animals";
+        List<Animals> animals = new ArrayList<Animals>();
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                Animals animal = new Animals();
+                animal.setId(rs.getInt("id"));
+                animal.setName(rs.getString("name"));
+                animals.add(animal);
+            }
+            rs.close();
+        }catch (SQLException e){
+            e.printStackTrace(); // poor error handling
+        }
+        return animals;
     }
 }
