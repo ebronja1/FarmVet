@@ -55,7 +55,17 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
 
     @Override
     public Medicines update(Medicines item) {
-        return null;
+        String insert = "UPDATE medicines SET name = ? WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, item.getName());
+            stmt.setObject(2, item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
