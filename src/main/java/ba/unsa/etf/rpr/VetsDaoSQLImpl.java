@@ -17,6 +17,23 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public Vets getById(int id) {
+        String query = "SELECT * FROM categories WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()){ // result set is iterator.
+                Vets vet = new Vets();
+                vet.setId(rs.getInt("id"));
+                vet.setName(rs.getString("name"));
+                rs.close();
+                return vet;
+            }else{
+                return null; // if there is no elements in the result set return null
+            }
+        }catch (SQLException e){
+            e.printStackTrace(); // poor error handling
+        }
         return null;
     }
 
