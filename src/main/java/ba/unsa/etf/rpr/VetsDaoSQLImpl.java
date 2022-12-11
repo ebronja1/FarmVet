@@ -1,15 +1,35 @@
 package ba.unsa.etf.rpr;
 
 import ba.unsa.etf.rpr.Vets;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+
 public class VetsDaoSQLImpl implements VetsDao{
     private Connection connection;
 
     public VetsDaoSQLImpl(){
+        String server =  new String();
+        String user = new String();
+        String pass = new String();
+        try {
+            File f = new File("/Users/Emir/Desktop/SqlUserPass.txt");
+            Scanner sc =  new Scanner(f);
+            server = sc.nextLine();
+            user = sc.nextLine();
+            pass = sc.nextLine();
+            sc.close();
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("Error with txt file");
+            e.printStackTrace();
+        }
         try{
-            this.connection = DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7582258", "sql7582258", "m6JTHrdhjw");
+            this.connection = DriverManager.getConnection(server, user, pass);
         }catch (Exception e){
             e.printStackTrace();
         }
