@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.*;
 import java.util.List;
 
 public class MedicinesDaoSQLImpl implements MedicinesDao{
@@ -16,6 +15,23 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
     }
     @Override
     public Medicines getById(int id) {
+        String query = "SELECT * FROM medicines WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()){ // result set is iterator.
+                Medicines medicine = new Medicines();
+                medicine.setId(rs.getInt("id"));
+                medicine.setName(rs.getString("name"));
+                rs.close();
+                return medicine;
+            }else{
+                return null; // if there is no elements in the result set return null
+            }
+        }catch (SQLException e){
+            e.printStackTrace(); // poor error handling
+        }
         return null;
     }
 
