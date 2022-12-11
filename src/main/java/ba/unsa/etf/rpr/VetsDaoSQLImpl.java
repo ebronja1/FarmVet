@@ -17,7 +17,7 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public Vets getById(int id) {
-        String query = "SELECT * FROM animals WHERE id = ?";
+        String query = "SELECT * FROM vets WHERE id = ?";
         try{
             PreparedStatement stmt = this.connection.prepareStatement(query);
             stmt.setInt(1, id);
@@ -39,7 +39,7 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public Vets add(Vets item) {
-        String insert = "INSERT INTO animals(name) VALUES(?)";
+        String insert = "INSERT INTO vets(name) VALUES(?)";
         try{
             PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, item.getName());
@@ -57,7 +57,7 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public Vets update(Vets item) {
-        String insert = "UPDATE animals SET name = ? WHERE id = ?";
+        String insert = "UPDATE vets SET name = ? WHERE id = ?";
         try{
             PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, item.getName());
@@ -72,7 +72,7 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public void delete(int id) {
-        String insert = "DELETE FROM animals WHERE id = ?";
+        String insert = "DELETE FROM vets WHERE id = ?";
         try{
             PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             stmt.setObject(1, id);
@@ -84,6 +84,21 @@ public class VetsDaoSQLImpl implements VetsDao{
 
     @Override
     public List<Vets> getAll() {
-        return null;
+        String query = "SELECT * FROM vets";
+        List<Vets> vets = new ArrayList<Vets>();
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                Vets vet = new Vets();
+                vet.setId(rs.getInt("id"));
+                vet.setName(rs.getString("name"));
+                vets.add(vet);
+            }
+            rs.close();
+        }catch (SQLException e){
+            e.printStackTrace(); // poor error handling
+        }
+        return vets;
     }
 }
