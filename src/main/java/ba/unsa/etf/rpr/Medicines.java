@@ -8,8 +8,8 @@ import java.util.Objects;
 public class Medicines {
     private int id;
     private String name;
-    private Animals animals;
-    private Vets vets;
+    private int animal_id;
+    private int vet_id;
 
     public int getId() {
         return id;
@@ -27,30 +27,30 @@ public class Medicines {
         this.name = name;
     }
 
-    public Animals getAnimals() {
-        return animals;
-    }
-
-    public void setAnimals(Animals animals) {
-        this.animals = animals;
-    }
-
-    public Vets getVets() {
-        return vets;
-    }
-
-    public void setVets(Vets vets) {
-        this.vets = vets;
-    }
-
     @Override
     public String toString() {
         return "Medicines{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", animals=" + animals +
-                ", vets=" + vets +
+                ", animal_id=" + animal_id +
+                ", vet_id=" + vet_id +
                 '}';
+    }
+
+    public int getAnimal_id() {
+        return animal_id;
+    }
+
+    public void setAnimal_id(int animal_id) {
+        this.animal_id = animal_id;
+    }
+
+    public int getVet_id() {
+        return vet_id;
+    }
+
+    public void setVet_id(int vet_id) {
+        this.vet_id = vet_id;
     }
 
     @Override
@@ -63,6 +63,6 @@ public class Medicines {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, animals, vets);
+        return Objects.hash(id, name, animal_id, vet_id);
     }
 }

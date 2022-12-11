@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MedicinesDaoSQLImpl implements MedicinesDao{
@@ -82,11 +83,44 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
 
     @Override
     public List<Medicines> getAll() {
-        return null;
+        String query = "SELECT * FROM medicines";
+        List<Medicines> medicines = new ArrayList<Medicines>();
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){ // result set is iterator.
+                Medicines medicine = new Medicines();
+                medicine.setId(rs.getInt("id"));
+                medicine.setName(rs.getString("name"));
+                medicines.add(medicine);
+            }
+            rs.close();
+        }catch (SQLException e){
+            e.printStackTrace(); // poor error handling
+        }
+        return medicines;
     }
 
     @Override
     public List<Medicines> searchByAnimals(Animals animal) {
+        String query = "SELECT * FROM medicines m, animals a WHERE a.id = m.animal_id AND animal = ?";
+        try {
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1, animal.getId());
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Medicines> medicinesList = new ArrayList<>();
+            while (rs.next()) {
+                Medicines m = new Medicines();
+                m.setId(rs.getInt(1));
+                m.setName(rs.getString(2));
+                m.setVet_id(rs.getInt(3));
+                m.setAnimal_id(rs.getInt(4));
+                medicinesList.add(m);
+            }
+            return medicinesList;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
