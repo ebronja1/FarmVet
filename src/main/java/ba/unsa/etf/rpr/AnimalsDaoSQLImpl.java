@@ -39,12 +39,35 @@ public class AnimalsDaoSQLImpl implements AnimalsDao {
 
     @Override
     public Animals add(Animals item) {
+        String insert = "INSERT INTO animals(name) VALUES(?)";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, item.getName());
+            stmt.executeUpdate();
+
+            ResultSet rs = stmt.getGeneratedKeys();
+            rs.next(); // we know that there is one key
+            item.setId(rs.getInt(1)); //set id to return it back
+            return item;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public Animals update(Animals item) {
-        return null;
+        String insert = "UPDATE animals SET name = ? WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, item.getName());
+            stmt.setObject(2, item.getId());
+            stmt.executeUpdate();
+            return item;
+        }catch (SQLException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @Override
