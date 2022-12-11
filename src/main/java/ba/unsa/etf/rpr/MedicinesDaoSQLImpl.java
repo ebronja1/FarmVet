@@ -70,7 +70,14 @@ public class MedicinesDaoSQLImpl implements MedicinesDao{
 
     @Override
     public void delete(int id) {
-
+        String insert = "DELETE FROM medicines WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
