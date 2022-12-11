@@ -17,6 +17,23 @@ public class AnimalsDaoSQLImpl implements AnimalsDao {
     }
     @Override
     public Animals getById(int id) {
+        String query = "SELECT * FROM animals WHERE id = ?";
+        try{
+            PreparedStatement stmt = this.connection.prepareStatement(query);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()){ // result set is iterator.
+                Animals animal = new Animals();
+                animal.setId(rs.getInt("id"));
+                animal.setName(rs.getString("name"));
+                rs.close();
+                return animal;
+            }else{
+                return null; // if there is no elements in the result set return null
+            }
+        }catch (SQLException e){
+            e.printStackTrace(); // poor error handling
+        }
         return null;
     }
 
