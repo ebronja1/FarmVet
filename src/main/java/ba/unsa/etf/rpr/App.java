@@ -1,21 +1,26 @@
 package ba.unsa.etf.rpr;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 /**
  * Hello world!
  *
  */
-public class App {
+public class App extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Hello, World!");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
+    }
     public static void main(String[] args) {
-        MedicinesDao dao = new MedicinesDaoSQLImpl();
-
-        Animals animal = new Animals();
-        animal.setId(2);
-        animal.setName("Milka");
-        ArrayList<Medicines> medicinesByAnimals = new ArrayList<Medicines>(dao.searchByAnimals(animal));
-        System.out.println("Treba ispisati 1 lijek po ovoj zivotinji: ");
-        medicinesByAnimals.forEach(m -> System.out.println(m.getName()));
-
+        launch(args);
     }
 }
