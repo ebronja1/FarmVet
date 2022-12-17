@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
 /**
  * Hello world!
  *
@@ -17,7 +19,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/sample.fxml"));
         primaryStage.setTitle("Hello, World!");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         primaryStage.show();
     }
     public static void main(String[] args) {
