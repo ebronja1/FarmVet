@@ -10,10 +10,14 @@ public class SampleController {
     public TextField usernameid;
 
     public void okButtonClick(ActionEvent actionEvent) {
+        if (usernameid.getText().isEmpty()) {
+            usernameid.getStyleClass().add("poljeNijeIspravno");
+            return;
+        }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("FarmVet");
         alert.setHeaderText("Login");
-        alert.setContentText("Welcome!");
+        alert.setContentText("Your username is:" + usernameid.getText());
 
         alert.showAndWait();
     }
