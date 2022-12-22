@@ -46,7 +46,7 @@ public class Controller {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Noviprozor.fxml"));
         Parent root = loader.load();
         Noviprozor noviprozor = loader.getController();
-        noviprozor.dobrodosaoButtonid.setText(noviprozor.dobrodosaoButtonid.getText() + usernameid.getText());
+        //noviprozor.dobrodosaoButtonid.setText(noviprozor.dobrodosaoButtonid.getText() + usernameid.getText());
         stage.setTitle("FarmVet");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.show();
