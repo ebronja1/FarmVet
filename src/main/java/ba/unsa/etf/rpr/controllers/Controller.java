@@ -4,11 +4,19 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
-public class SampleController {
+import java.io.IOException;
+
+import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
+
+public class Controller {
     public Button okdugmeid;
     public TextField usernameid;
 
@@ -29,16 +37,18 @@ public class SampleController {
         });
     }
 
-    public void okButtonClick(ActionEvent actionEvent) {
+    public void okButtonClick(ActionEvent actionEvent) throws IOException {
         if (usernameid.getText().isEmpty()) {
             usernameid.getStyleClass().add("poljeNijeIspravno");
             return;
         }
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("FarmVet");
-        alert.setHeaderText("Login");
-        alert.setContentText("Your username is:" + usernameid.getText());
-
-        alert.showAndWait();
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Noviprozor.fxml"));
+        Parent root = loader.load();
+        Noviprozor noviprozor = loader.getController();
+        noviprozor.dobrodosaoButtonid.setText(noviprozor.dobrodosaoButtonid.getText() + usernameid.getText());
+        stage.setTitle("FarmVet");
+        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.show();
     }
 }
