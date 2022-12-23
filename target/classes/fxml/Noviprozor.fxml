@@ -9,9 +9,13 @@
 <?import javafx.scene.layout.BorderPane?>
 
 
+<?import java.net.URL?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ba.unsa.etf.rpr.controllers.Noviprozor">
-   <center>
-      <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+    <stylesheets>
+        <URL value="@../css/Noviprozor.css" />
+    </stylesheets>
+    <center>
+      <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="textArea" />
    </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
@@ -19,15 +23,15 @@
           <Menu text="_File">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem text="_New" />
-                  <MenuItem mnemonicParsing="false" text="open" />
-                  <MenuItem text="_Save">
+                  <MenuItem fx:id="mniNew" text="_New" />
+                  <MenuItem mnemonicParsing="false" text="Open" onAction="#akcijaOpen" />
+                  <MenuItem fx:id="mniSave" text="_Save">
                      <accelerator>
                         <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem text="E_xit" />
+                  <MenuItem fx:id="mniExit" text="E_xit" onAction="#akcijaKraj"/>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

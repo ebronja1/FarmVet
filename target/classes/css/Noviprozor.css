@@ -1,0 +1,18 @@
+#mniNew > .label{
+    -fx-graphic: url("/img/document-new.png");
+}
+#mniNew .accelerator-text{
+    -fx-graphic: none;
+}
+#mniSave > .label{
+    -fx-graphic: url("/img/document-save.png");
+}
+#mniSave .accelerator-text{
+    -fx-graphic: none;
+}
+#mniExit > .label{
+    -fx-graphic: url("/img/document-exit.png");
+}
+#mniExit .accelerator-text{
+    -fx-graphic: none;
+}

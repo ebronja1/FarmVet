@@ -15,7 +15,7 @@
         <URL value="@../css/Noviprozor.css" />
     </stylesheets>
     <center>
-      <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" fx:id="textArea" />
    </center>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
