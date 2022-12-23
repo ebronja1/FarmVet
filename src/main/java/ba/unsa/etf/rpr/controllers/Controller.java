@@ -39,7 +39,12 @@ public class Controller {
 
     public void okButtonClick(ActionEvent actionEvent) throws IOException {
         if (usernameid.getText().isEmpty()) {
-            usernameid.getStyleClass().add("poljeNijeIspravno");
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Greska");
+            alert.setHeaderText("Neispravni podaci");
+            alert.setContentText("Neispravan username");
+
+            alert.showAndWait();
             return;
         }
         Stage stage = new Stage();
