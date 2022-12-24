@@ -18,10 +18,34 @@
 }
 #tbNew {
     -fx-graphic: url("/img/tb-new.png");
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
 }
 #tbOpen {
     -fx-graphic: url("/img/tb-open.png");
+     -fx-background-color: transparent;
+     -fx-border-width: 0;
 }
 #tbExit {
     -fx-graphic: url("/img/tb-exit.png");
+     -fx-background-color: transparent;
+     -fx-border-width: 0;
+}
+#tbNew: pressed {
+    -fx-background-color: yellow;
+}
+#tbOpen: pressed {
+    -fx-background-color: yellow;
+}
+#tbExit: pressed {
+    -fx-background-color: yellow;
+}
+#tbNew: hover {
+    -fx-background-color: lightgray;
+}
+#tbOpen: hover {
+    -fx-background-color: lightgray;
+}
+#tbExit: hover {
+    -fx-background-color: lightgray;
 }

@@ -18,7 +18,7 @@
         <URL value="@../css/Noviprozor.css" />
     </stylesheets>
     <center>
-      <TextArea prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
    <top>
       <VBox BorderPane.alignment="CENTER">
@@ -29,14 +29,14 @@
                   <items>
                     <MenuItem mnemonicParsing="false" text="Close" />
                         <MenuItem fx:id="mniNew" text="_New" />
-                        <MenuItem mnemonicParsing="false" text="Open" />
+                        <MenuItem fx:id="mniOpen" mnemonicParsing="false" onAction="#akcijaOpen" text="Open" />
                         <MenuItem fx:id="mniSave" text="_Save">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
                            </accelerator>
                         </MenuItem>
                         <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem fx:id="mniExit" text="E_xit" />
+                        <MenuItem fx:id="mniExit" onAction="#akcijaKraj" text="E_xit" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
@@ -60,9 +60,9 @@
               <items>
                 <Button fx:id="tbNew" mnemonicParsing="false" />
                   <Separator orientation="VERTICAL" />
-                  <Button fx:id="tbOpen" mnemonicParsing="false" />
+                  <Button fx:id="tbOpen" mnemonicParsing="false" onAction="#akcijaOpen" />
                   <Separator orientation="VERTICAL" />
-                  <Button fx:id="tbExit" mnemonicParsing="false" />
+                  <Button fx:id="tbExit" mnemonicParsing="false" onAction="#akcijaKraj" />
               </items>
             </ToolBar>
          </children>

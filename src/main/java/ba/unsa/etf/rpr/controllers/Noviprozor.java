@@ -23,6 +23,7 @@ public class Noviprozor {
         izbornik.setTitle("Izaberite datoteku");
         izbornik.getExtensionFilters().add(new FileChooser.ExtensionFilter("Tekstualna datoteka", "*.txt"));
         File izabrani = izbornik.showOpenDialog(textArea.getScene().getWindow());
+        if(izabrani == null) return;
         izbornik.showOpenDialog(textArea.getScene().getWindow());
         try {
             String tekst = new String(Files.readAllBytes(izabrani.toPath()));
