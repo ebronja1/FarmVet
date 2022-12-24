@@ -48,8 +48,6 @@ public class Noviprozor {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/properties.fxml"));
         Parent root = loader.load();
-        Noviprozor noviprozor = loader.getController();
-        //noviprozor.dobrodosaoButtonid.setText(noviprozor.dobrodosaoButtonid.getText() + usernameid.getText());
         stage.setTitle("Properties");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
