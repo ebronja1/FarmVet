@@ -58,11 +58,11 @@
             </MenuBar>
             <ToolBar prefHeight="40.0" prefWidth="200.0">
               <items>
-                <Button fx:id="tbNew" mnemonicParsing="false" />
+                <Button fx:id="tbNew" mnemonicParsing="false" styleClass="tbButton" />
                   <Separator orientation="VERTICAL" />
-                  <Button fx:id="tbOpen" mnemonicParsing="false" onAction="#akcijaOpen" />
+                  <Button fx:id="tbOpen" mnemonicParsing="false" onAction="#akcijaOpen" styleClass="tbButton" />
                   <Separator orientation="VERTICAL" />
-                  <Button fx:id="tbExit" mnemonicParsing="false" onAction="#akcijaKraj" />
+                  <Button fx:id="tbExit" mnemonicParsing="false" onAction="#akcijaKraj" styleClass="tbButton" />
               </items>
             </ToolBar>
          </children>
