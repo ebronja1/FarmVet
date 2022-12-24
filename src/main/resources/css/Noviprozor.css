@@ -16,3 +16,12 @@
 #mniExit .accelerator-text{
     -fx-graphic: none;
 }
+#tbNew {
+    -fx-graphic: url("/img/tb-new.png");
+}
+#tbOpen {
+    -fx-graphic: url("/img/tb-open.png");
+}
+#tbExit {
+    -fx-graphic: url("/img/tb-exit.png");
+}
