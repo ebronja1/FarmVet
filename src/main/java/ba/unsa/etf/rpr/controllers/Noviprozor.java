@@ -26,6 +26,7 @@ public class Noviprozor {
         izbornik.showOpenDialog(textArea.getScene().getWindow());
         try {
             String tekst = new String(Files.readAllBytes(izabrani.toPath()));
+            textArea.setText(tekst);
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setHeaderText("Greska");
