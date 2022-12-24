@@ -91,7 +91,7 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
           <Button defaultButton="true" mnemonicParsing="false" text="ok" />
-            <Button cancelButton="true" mnemonicParsing="false" text="cancel" />
+            <Button fx:id="buttonCancelProperties" cancelButton="true" mnemonicParsing="false" onAction="#actionClose" text="cancel" />
         </buttons>
       </ButtonBar>
    </bottom>
