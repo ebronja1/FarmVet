@@ -51,7 +51,7 @@ public class Properties {
                 fldPrezime.getStyleClass().removeAll("poljeNijeeIspravno");
                 fldPrezime.getStyleClass().add("poljeJeIspravno");
         }
-        /*if (fldDatum.getValue() == null) {
+        if (fldDatum.getValue() == null) {
             Alert upozorenje = new Alert(Alert.AlertType.ERROR);
             upozorenje.setTitle("Datum polje ne moze biti prazno");
             upozorenje.showAndWait();
@@ -65,7 +65,7 @@ public class Properties {
             fldDatum.getEditor().getStyleClass().removeAll("poljeNijeeIspravno");
             fldDatum.getEditor().getStyleClass().add("poljeJeIspravno");
         }
-        /*if (fldDatum.getValue().isAfter(LocalDate.now())) {
+        if (fldDatum.getValue().isAfter(LocalDate.now())) {
             Alert upozorenje = new Alert(Alert.AlertType.ERROR);
             upozorenje.setTitle("Datum je u buducnosti");
             upozorenje.showAndWait();
@@ -77,7 +77,7 @@ public class Properties {
         else {
             fldDatum.getEditor().getStyleClass().removeAll("poljeNijeeIspravno");
             fldDatum.getEditor().getStyleClass().add("poljeJeIspravno");
-        }*/
+        }
     return sveIspravno;
     }
 }
