@@ -49,12 +49,12 @@
          </rowConstraints>
          <children>
             <Label text="Ime:" />
-            <TextField GridPane.columnIndex="1" />
+            <TextField fx:id="fldIme" GridPane.columnIndex="1" />
             <Label text="Prezime:" GridPane.columnIndex="2" />
-            <TextField GridPane.columnIndex="3" />
+            <TextField fx:id="fldPrezime" GridPane.columnIndex="3" />
             <Separator GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="1" />
             <Label text="Datum rodjenja:" GridPane.rowIndex="3" />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="fldDatum" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Slider showTickLabels="true" showTickMarks="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label text="Spol" GridPane.rowIndex="6" />
             <HBox prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -90,7 +90,7 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-          <Button defaultButton="true" mnemonicParsing="false" text="ok" />
+          <Button defaultButton="true" mnemonicParsing="false" onAction="#actionSubmit" text="ok" />
             <Button fx:id="buttonCancelProperties" cancelButton="true" mnemonicParsing="false" onAction="#actionClose" text="cancel" />
         </buttons>
       </ButtonBar>

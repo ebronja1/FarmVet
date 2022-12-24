@@ -2,3 +2,9 @@
     -fx-border-width: 3px;
     -fx-border-color: black;
 }
+.poljeNijeIspravno {
+   -fx-background-color: lightpink;
+}
+.poljeJeIspravno {
+   -fx-background-color: yellowgreen;
+}
