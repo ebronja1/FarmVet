@@ -1,6 +1,6 @@
-package ba.unsa.etf.rpr;
+package ba.unsa.etf.rpr.dao;
 
-import dao.VetsDao;
+import ba.unsa.etf.rpr.domain.Vets;
 
 import java.io.File;
 import java.io.FileNotFoundException;

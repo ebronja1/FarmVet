@@ -1,7 +1,6 @@
-package dao;
+package ba.unsa.etf.rpr.dao;
 
-import ba.unsa.etf.rpr.Vets;
-import dao.Dao;
+import ba.unsa.etf.rpr.domain.Vets;
 
 /**
  * Dao interface for Vets bean
