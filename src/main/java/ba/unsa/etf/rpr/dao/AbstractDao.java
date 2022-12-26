@@ -54,6 +54,16 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
     public List<T> getAll() throws FarmVetException {
         return executeQuery("SELECT * FROM "+ tableName, null);
     }
+    public void delete(int id) throws FarmVetException {
+        String sql = "DELETE FROM "+tableName+" WHERE id = ?";
+        try{
+            PreparedStatement stmt = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setObject(1, id);
+            stmt.executeUpdate();
+        }catch (SQLException e){
+            throw new FarmVetException(e.getMessage(), e);
+        }
+    }
     public List<T> executeQuery(String query, Object[] params) throws FarmVetException{
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
