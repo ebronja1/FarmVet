@@ -29,5 +29,8 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
             System.exit(0);
         }
     }
+    public Connection getConnection(){
+        return this.connection;
+    }
 }
 
