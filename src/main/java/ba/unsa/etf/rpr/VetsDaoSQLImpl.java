@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr;
 
-import ba.unsa.etf.rpr.Vets;
+import dao.VetsDao;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class VetsDaoSQLImpl implements VetsDao{
+public class VetsDaoSQLImpl implements VetsDao {
     private Connection connection;
 
     public VetsDaoSQLImpl(){

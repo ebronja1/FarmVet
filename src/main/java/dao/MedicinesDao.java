@@ -1,8 +1,10 @@
-package ba.unsa.etf.rpr;
+package dao;
 
 
-import ba.unsa.etf.rpr.Vets;
 import ba.unsa.etf.rpr.Animals;
+import ba.unsa.etf.rpr.Medicines;
+import ba.unsa.etf.rpr.Vets;
+import dao.Dao;
 
 import java.util.List;
 

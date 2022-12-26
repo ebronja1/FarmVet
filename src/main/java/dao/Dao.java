@@ -1,4 +1,4 @@
-package ba.unsa.etf.rpr;
+package dao;
 
 import java.util.List;
 
