@@ -42,5 +42,11 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @throws FarmVetException in case of error with db
      */
     public abstract T row2object(ResultSet rs) throws FarmVetException;
+    /**
+     * Method for mapping Object into Map
+     * @param object - a bean object for specific table
+     * @return key, value sorted map of object
+     */
+    public abstract Map<String, Object> object2row(T object);
 }
 
