@@ -48,6 +48,10 @@ public abstract class AbstractDao<T extends Idable> implements Dao<T>{
      * @return key, value sorted map of object
      */
     public abstract Map<String, Object> object2row(T object);
+    public T getById(int id) throws FarmVetException {
+        return executeQueryUnique("SELECT * FROM "+this.tableName+" WHERE id = ?", new Object[]{id});
+    }
+
     public List<T> executeQuery(String query, Object[] params) throws FarmVetException{
         try {
             PreparedStatement stmt = getConnection().prepareStatement(query);
