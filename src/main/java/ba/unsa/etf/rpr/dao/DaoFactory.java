@@ -16,4 +16,14 @@ public class DaoFactory {
 
     private DaoFactory() {
     }
+    public static AnimalsDao animalsDao(){
+        return animalsDao;
+    }
+    public static MedicinesDao quoteDao(){
+        return medicinesDao;
+    }
+
+    public static VetsDao quoteHistoryDao(){
+        return vetsDao;
+    }
 }
