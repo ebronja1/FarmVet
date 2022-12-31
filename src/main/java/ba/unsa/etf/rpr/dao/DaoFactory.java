@@ -9,9 +9,9 @@ import java.sql.Connection;
  */
 public class DaoFactory {
 
-    private static final AnimalsDao categoryDao = new AnimalsDaoSQLImpl();
-    private static final MedicinesDao quoteDao = new MedicinesDaoSQLImpl();
-    private static final VetsDao quoteHistoryDao = new VetsDaoSQLImpl();
+    private static final AnimalsDao animalsDao = new AnimalsDaoSQLImpl();
+    private static final MedicinesDao medicinesDao = new MedicinesDaoSQLImpl();
+    private static final VetsDao vetsDao = new VetsDaoSQLImpl();
 
 
     private DaoFactory() {
