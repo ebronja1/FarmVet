@@ -8,10 +8,8 @@ import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+
 /**
  * MySQL Implementation of DAO
  * @author Emir Bronja
@@ -35,10 +33,21 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
         }
     }
 
+    /**
+     * @param object - object to be mapped
+     * @return map representation of object
+     */
     @Override
     public Map<String, Object> object2row(Medicines object) {
-        return null;
+        Map<String, Object> item = new TreeMap<>();
+        item.put("medicine_id", object.getId());
+        item.put("name", object.getMedicine());
+        item.put("taked", object.getTaked());
+        item.put("animal_id", object.getAnimal().getId());
+        item.put("vet_id", object.getVet().getId());
+        return item;
     }
+
 
     @Override
     public List<Medicines> searchByAnimals(Animals animal) {
