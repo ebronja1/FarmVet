@@ -3,8 +3,6 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Animals;
 import ba.unsa.etf.rpr.exceptions.FarmVetException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.*;
 
