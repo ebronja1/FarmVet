@@ -21,9 +21,18 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
         super("medicines");
     }
 
-    @Override
-    public Medicines row2object(ResultSet rs) throws FarmVetException {
-        return null;
+    public Medicines row2object(ResultSet rs) throws FarmVetException{
+        try {
+            Medicines m = new Medicines();
+            m.setId(rs.getInt("medicine_id"));
+            m.setMedicine(rs.getString("name"));
+            m.setTaked(rs.getDate("taked"));
+            m.setAnimal(DaoFactory.animalsDao().getById(rs.getInt("animal_id")));
+            m.setVet(DaoFactory.vetsDao().getById(rs.getInt("vet_id")));
+            return m;
+        } catch (Exception e) {
+            throw new FarmVetException(e.getMessage(), e);
+        }
     }
 
     @Override
