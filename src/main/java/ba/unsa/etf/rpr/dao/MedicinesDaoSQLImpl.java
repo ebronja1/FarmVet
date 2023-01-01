@@ -45,6 +45,8 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
         item.put("taked", object.getTaked());
         item.put("animal_id", object.getAnimal().getId());
         item.put("vet_id", object.getVet().getId());
+
+
         return item;
     }
 
