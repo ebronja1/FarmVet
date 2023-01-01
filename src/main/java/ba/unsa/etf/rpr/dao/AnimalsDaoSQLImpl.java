@@ -6,10 +6,7 @@ import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class AnimalsDaoSQLImpl extends AbstractDao<Animals> implements AnimalsDao {
     public AnimalsDaoSQLImpl() {
@@ -31,6 +28,10 @@ public class AnimalsDaoSQLImpl extends AbstractDao<Animals> implements AnimalsDa
 
     @Override
     public Map<String, Object> object2row(Animals object) {
-        return null;
+        Map<String, Object> row = new TreeMap<>();
+        row.put("animal_id", object.getId());
+        row.put("name", object.getName());
+        row.put("kind", object.getKind());
+        return row;
     }
 }
