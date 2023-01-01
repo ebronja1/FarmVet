@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="877a58ff-9eab-448f-9608-8f61609c1e40" name="Changes" comment="gitignore">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="877a58ff-9eab-448f-9608-8f61609c1e40" name="Changes" comment="gitignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,20 +88,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1670696526509</updated>
-    </task>
-    <task id="LOCAL-00075" summary="new window properties spinner cancel button action">
-      <created>1671916923540</created>
-      <option name="number" value="00075" />
-      <option name="presentableId" value="LOCAL-00075" />
-      <option name="project" value="LOCAL" />
-      <updated>1671916923540</updated>
-    </task>
-    <task id="LOCAL-00076" summary="new window properties spinner validacija">
-      <created>1671924316168</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1671924316168</updated>
     </task>
     <task id="LOCAL-00077" summary="new window properties spinner validacija ime i prezime">
       <created>1671924385102</created>
@@ -434,7 +418,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672596819686</updated>
     </task>
-    <option name="localTasksCounter" value="124" />
+    <task id="LOCAL-00124" summary="gitignore">
+      <created>1672596868827</created>
+      <option name="number" value="00124" />
+      <option name="presentableId" value="LOCAL-00124" />
+      <option name="project" value="LOCAL" />
+      <updated>1672596868827</updated>
+    </task>
+    <task id="LOCAL-00125" summary="gitignore">
+      <created>1672597398564</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1672597398564</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
