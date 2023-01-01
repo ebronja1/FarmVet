@@ -20,7 +20,14 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
 
     @Override
     public Vets row2object(ResultSet rs) throws FarmVetException {
-        return null;
+        try {
+            Vets vet = new Vets();
+            vet.setId(rs.getInt("vet_id"));
+            vet.setName(rs.getString("name"));
+            return vet;
+        } catch (SQLException e) {
+            throw new FarmVetException(e.getMessage(), e);
+        }
     }
 
     @Override
