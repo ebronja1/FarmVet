@@ -49,6 +49,17 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
     }
 
 
+    /**
+     * @param text search string for medicines
+     * @return list of medicines
+     * @author Emir Bronja
+     */
+
+    @Override
+    public List<Medicines> searchByText(String text) throws FarmVetException{
+        return executeQuery("SELECT * FROM medicines WHERE name LIKE concat('%', ?, '%')", new Object[]{text});
+    }
+
     @Override
     public List<Medicines> searchByAnimals(Animals animal) {
         return null;

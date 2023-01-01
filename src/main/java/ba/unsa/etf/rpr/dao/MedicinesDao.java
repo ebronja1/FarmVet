@@ -4,6 +4,7 @@ package ba.unsa.etf.rpr.dao;
 import ba.unsa.etf.rpr.domain.Animals;
 import ba.unsa.etf.rpr.domain.Medicines;
 import ba.unsa.etf.rpr.domain.Vets;
+import ba.unsa.etf.rpr.exceptions.FarmVetException;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public interface MedicinesDao extends Dao<Medicines> {
      * @return list of medicines
      */
     List<Medicines> searchByAnimals(Animals animal);
+
     /**
      * Returns all medicines that contains given text.
      *
@@ -27,4 +29,6 @@ public interface MedicinesDao extends Dao<Medicines> {
      * @return list of medicines
      */
     List<Medicines> searchByVets(Vets vet);
+
+    List<Medicines> searchByText(String text) throws FarmVetException;
 }
