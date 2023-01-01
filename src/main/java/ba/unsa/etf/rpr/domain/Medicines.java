@@ -1,15 +1,17 @@
 package ba.unsa.etf.rpr.domain;
 
+import java.util.Date;
 import java.util.Objects;
 /**
  * bean for Medicines
  * @author Emir Bronja
  */
-public class Medicines {
+public class Medicines implements Idable{
     private int id;
-    private String name;
+    private String medicine;
     private int animal_id;
     private int vet_id;
+    private Date taked;
 
     public int getId() {
         return id;
@@ -19,23 +21,15 @@ public class Medicines {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getMedicine() {
+        return medicine;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMedicine(String medicine) {
+        this.medicine = medicine;
     }
 
-    @Override
-    public String toString() {
-        return "Medicines{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", animal_id=" + animal_id +
-                ", vet_id=" + vet_id +
-                '}';
-    }
+
 
     public int getAnimal_id() {
         return animal_id;
@@ -52,7 +46,12 @@ public class Medicines {
     public void setVet_id(int vet_id) {
         this.vet_id = vet_id;
     }
-
+    public Date getTaked() {
+        return taked;
+    }
+    public void setCreated(Date taked) {
+        this.taked = taked;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -63,6 +62,6 @@ public class Medicines {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, animal_id, vet_id);
+        return Objects.hash(id, medicine, animal_id, vet_id, taked);
     }
 }

@@ -19,11 +19,11 @@ public class DaoFactory {
     public static AnimalsDao animalsDao(){
         return animalsDao;
     }
-    public static MedicinesDao quoteDao(){
+    public static MedicinesDao medicinesDao(){
         return medicinesDao;
     }
 
-    public static VetsDao quoteHistoryDao(){
+    public static VetsDao vetsDao(){
         return vetsDao;
     }
 }

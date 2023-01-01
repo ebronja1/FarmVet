@@ -10,11 +10,14 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+/**
+ * MySQL Implementation of DAO
+ * @author Emir Bronja
+ */
 public class MedicinesDaoSQLImpl implements MedicinesDao {
     private Connection connection;
 
-    public MedicinesDaoSQLImpl(){
+    /*public MedicinesDaoSQLImpl(){
         String server =  new String();
         String user = new String();
         String pass = new String();
@@ -35,7 +38,7 @@ public class MedicinesDaoSQLImpl implements MedicinesDao {
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
+    }*/
     @Override
     public Medicines getById(int id) {
         String query = "SELECT * FROM medicines WHERE id = ?";
