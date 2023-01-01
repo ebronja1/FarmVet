@@ -9,8 +9,8 @@ import java.util.Objects;
 public class Medicines implements Idable{
     private int id;
     private String medicine;
-    private int animal_id;
-    private int vet_id;
+    private Animals animal;
+    private Vets vet;
     private Date taked;
 
     public int getId() {
@@ -31,20 +31,20 @@ public class Medicines implements Idable{
 
 
 
-    public int getAnimal_id() {
-        return animal_id;
+    public Animals getAnimal() {
+        return animal;
     }
 
-    public void setAnimal_id(int animal_id) {
-        this.animal_id = animal_id;
+    public void setAnimal(Animals animal) {
+        this.animal = animal;
     }
 
-    public int getVet_id() {
-        return vet_id;
+    public Vets getVet() {
+        return vet;
     }
 
-    public void setVet_id(int vet_id) {
-        this.vet_id = vet_id;
+    public void setVet(Vets vet) {
+        this.vet = vet;
     }
     public Date getTaked() {
         return taked;
@@ -57,8 +57,8 @@ public class Medicines implements Idable{
         return "Medicine{" +
                 "id=" + id +
                 ", medicine='" + medicine + '\'' +
-                ", animal_id=" + animal_id +
-                ", vet_id=" + vet_id +
+                ", animal=" + animal +
+                ", vet=" + vet +
                 ", taked=" + taked +
                 '}';
     }
@@ -72,6 +72,6 @@ public class Medicines implements Idable{
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, medicine, animal_id, vet_id, taked);
+        return Objects.hash(id, medicine, animal, vet, taked);
     }
 }
