@@ -60,9 +60,14 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
         return executeQuery("SELECT * FROM medicines WHERE name LIKE concat('%', ?, '%')", new Object[]{text});
     }
 
+    /**
+     * @param animal search string for medicines
+     * @return list of medicines
+     * @author Emir Bronja
+     */
     @Override
-    public List<Medicines> searchByAnimals(Animals animal) {
-        return null;
+    public List<Medicines> searchByAnimals(Animals animal) throws FarmVetException{
+        return executeQuery("SELECT * FROM medicines WHERE animal_id = ?", new Object[]{animal.getId()});
     }
 
     @Override

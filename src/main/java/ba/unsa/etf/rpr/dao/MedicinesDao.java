@@ -20,7 +20,7 @@ public interface MedicinesDao extends Dao<Medicines> {
      * @param animal search string for medicines
      * @return list of medicines
      */
-    List<Medicines> searchByAnimals(Animals animal);
+    List<Medicines> searchByAnimals(Animals animal) throws FarmVetException;
 
     /**
      * Returns all medicines that contains given text.
