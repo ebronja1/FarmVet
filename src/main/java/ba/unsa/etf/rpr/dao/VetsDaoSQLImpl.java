@@ -7,10 +7,7 @@ import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
 
@@ -32,6 +29,9 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
 
     @Override
     public Map<String, Object> object2row(Vets object) {
-        return null;
+        Map<String, Object> row = new TreeMap<>();
+        row.put("vet_id", object.getId());
+        row.put("name", object.getName());
+        return row;
     }
 }
