@@ -71,7 +71,7 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
     }
 
     @Override
-    public List<Medicines> searchByVets(Vets vet) {
-        return null;
+    public List<Medicines> searchByVets(Vets vet) throws FarmVetException{
+        return executeQuery("SELECT * FROM medicines WHERE vet_id = ?", new Object[]{vet.getId()});
     }
 }

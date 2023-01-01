@@ -28,7 +28,7 @@ public interface MedicinesDao extends Dao<Medicines> {
      * @param vet search string for quotes
      * @return list of medicines
      */
-    List<Medicines> searchByVets(Vets vet);
+    List<Medicines> searchByVets(Vets vet) throws FarmVetException;
 
     List<Medicines> searchByText(String text) throws FarmVetException;
 }
