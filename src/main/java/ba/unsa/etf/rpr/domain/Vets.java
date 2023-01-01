@@ -5,7 +5,7 @@ import java.util.Objects;
  * bean for Vets
  * @author Emir Bronja
  */
-public class Vets {
+public class Vets implements Idable {
     private int id;
     private String name;
 
