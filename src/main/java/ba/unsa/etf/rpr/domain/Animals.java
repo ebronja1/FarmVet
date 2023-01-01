@@ -51,6 +51,6 @@ public class Animals implements Idable{
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, kind);
     }
 }

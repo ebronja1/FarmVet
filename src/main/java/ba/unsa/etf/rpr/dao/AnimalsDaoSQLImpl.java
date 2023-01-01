@@ -18,7 +18,15 @@ public class AnimalsDaoSQLImpl extends AbstractDao<Animals> implements AnimalsDa
 
     @Override
     public Animals row2object(ResultSet rs) throws FarmVetException {
-        return null;
+        try {
+            Animals animal = new Animals();
+            animal.setId(rs.getInt("animal_id"));
+            animal.setName(rs.getString("name"));
+            animal.setKind(rs.getString("kind"));
+            return animal;
+        } catch (SQLException e) {
+            throw new FarmVetException(e.getMessage(), e);
+        }
     }
 
     @Override
