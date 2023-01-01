@@ -49,8 +49,18 @@ public class Medicines implements Idable{
     public Date getTaked() {
         return taked;
     }
-    public void setCreated(Date taked) {
+    public void setTaked(Date taked) {
         this.taked = taked;
+    }
+    @Override
+    public String toString() {
+        return "Medicine{" +
+                "id=" + id +
+                ", medicine='" + medicine + '\'' +
+                ", animal_id=" + animal_id +
+                ", vet_id=" + vet_id +
+                ", taked=" + taked +
+                '}';
     }
     @Override
     public boolean equals(Object o) {
