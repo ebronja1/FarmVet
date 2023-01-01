@@ -5,7 +5,7 @@ import java.util.Objects;
  * bean for Animals
  * @author Emir Bronja
  */
-public class Animals {
+public class Animals implements Idable{
     private int id;
     private String name;
     private String kind;
