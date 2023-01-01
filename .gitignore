@@ -1,4 +1,4 @@
 # Project exclude paths
 target
 .idea
-src/main/resources/db.properties
+db.properties
