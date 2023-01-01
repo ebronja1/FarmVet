@@ -69,7 +69,11 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
     public List<Medicines> searchByAnimals(Animals animal) throws FarmVetException{
         return executeQuery("SELECT * FROM medicines WHERE animal_id = ?", new Object[]{animal.getId()});
     }
-
+    /**
+     * @param vet search string for medicines
+     * @return list of medicines
+     * @author Emir Bronja
+     */
     @Override
     public List<Medicines> searchByVets(Vets vet) throws FarmVetException{
         return executeQuery("SELECT * FROM medicines WHERE vet_id = ?", new Object[]{vet.getId()});
