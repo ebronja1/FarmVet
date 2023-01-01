@@ -35,10 +35,7 @@ public class Vets implements Idable {
 
     @Override
     public String toString() {
-        return "Vets{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return name;
     }
 
     @Override

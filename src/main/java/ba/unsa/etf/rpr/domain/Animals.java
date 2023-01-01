@@ -43,11 +43,7 @@ public class Animals implements Idable{
 
     @Override
     public String toString() {
-        return "Animals{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", kind='" + kind + '\'' +
-                '}';
+        return name;
     }
     @Override
     public int hashCode() {
