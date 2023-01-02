@@ -9,6 +9,14 @@ public class Vets implements Idable {
     private int id;
     private String name;
 
+    public Vets() {
+    }
+
+    public Vets(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

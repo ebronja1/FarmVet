@@ -1,11 +1,16 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.VetsManager;
+import ba.unsa.etf.rpr.domain.Vets;
+import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ControllerRegistration {
     public Button registrationButton;
@@ -41,6 +46,27 @@ public class ControllerRegistration {
             }
         });
     }
-    public void actionRegistration(ActionEvent actionEvent) {
+    public void actionRegistration(ActionEvent actionEvent) throws FarmVetException {
+        boolean correct = true;
+
+            if (registrationName.getText().length() < 3 || registrationPassword.getText().length() < 3) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Status registracije:");
+                alert.setContentText("Neuspješna registracija!");
+                alert.showAndWait();
+                correct = false;
+            } else {
+                correct = true;
+                String name = registrationName.getText();
+                VetsManager vManager = new VetsManager();
+                Vets v = new Vets(0, name);
+                vManager.add(v);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Status registracije:");
+                alert.setContentText("Uspješno ste registrovani!");
+                alert.showAndWait();
+                Stage stage = (Stage) registrationButton.getScene().getWindow();
+                stage.close();
+            }
     }
 }
