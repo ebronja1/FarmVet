@@ -23,5 +23,7 @@ public class MedicinesManager {
         return DaoFactory.medicinesDao().searchByText(text);
     }
 
-
+    public void delete(int id) throws FarmVetException{
+        DaoFactory.medicinesDao().delete(id);
+    }
 }
