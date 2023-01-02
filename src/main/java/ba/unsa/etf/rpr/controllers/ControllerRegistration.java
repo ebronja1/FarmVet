@@ -18,12 +18,25 @@ public class ControllerRegistration {
         registrationName.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
-                if (n.trim().isEmpty()) {
+                if (n.trim().length() < 3) {
                     registrationName.getStyleClass().removeAll("poljeJeIspravno");
                     registrationName.getStyleClass().add("poljeNijeIspravno");
                 } else {
                     registrationName.getStyleClass().removeAll("poljeNijeIspravno");
                     registrationName.getStyleClass().add("poljeJeIspravno");
+                }
+            }
+        });
+        registrationPassword.getStyleClass().add("poljeNijeIspravno");
+        registrationPassword.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
+                if (n.trim().length() < 3) {
+                    registrationPassword.getStyleClass().removeAll("poljeJeIspravno");
+                    registrationPassword.getStyleClass().add("poljeNijeIspravno");
+                } else {
+                    registrationPassword.getStyleClass().removeAll("poljeNijeIspravno");
+                    registrationPassword.getStyleClass().add("poljeJeIspravno");
                 }
             }
         });
