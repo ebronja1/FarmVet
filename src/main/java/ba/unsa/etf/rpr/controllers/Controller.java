@@ -56,4 +56,7 @@ public class Controller {
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.show();
     }
+
+    public void actionRegisterLinkClick(ActionEvent actionEvent) {
+    }
 }
