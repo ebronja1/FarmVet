@@ -46,4 +46,10 @@ public class AnimalsManager {
             throw e;
         }
     }
+
+
+    public Animals update(Animals animal) throws FarmVetException{
+        validateAnimalsName(animal.getName());
+        return DaoFactory.animalsDao().update(animal);
+    }
 }
