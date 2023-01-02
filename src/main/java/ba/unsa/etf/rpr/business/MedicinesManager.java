@@ -26,4 +26,9 @@ public class MedicinesManager {
     public void delete(int id) throws FarmVetException{
         DaoFactory.medicinesDao().delete(id);
     }
+
+    public Medicines getById(int medicineId) throws FarmVetException{
+        return DaoFactory.medicinesDao().getById(medicineId);
+    }
+
 }
