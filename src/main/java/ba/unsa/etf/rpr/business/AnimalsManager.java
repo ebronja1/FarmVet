@@ -35,4 +35,15 @@ public class AnimalsManager {
             throw e;
         }
     }
+
+    public void delete(int animalsId) throws FarmVetException {
+        try {
+            DaoFactory.animalsDao().delete(animalsId);
+        } catch (FarmVetException e) {
+            if (e.getMessage().contains("FOREIGN KEY")) {
+                throw new FarmVetException("Cannot delete animal which is related to medicines. First delete related meidicnes before deleting animal.");
+            }
+            throw e;
+        }
+    }
 }
