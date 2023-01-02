@@ -34,4 +34,8 @@ public class MedicinesManager {
     public void update(Medicines m) throws FarmVetException{
         DaoFactory.medicinesDao().update(m);
     }
+
+    public Medicines add(Medicines m) throws FarmVetException{
+        return DaoFactory.medicinesDao().add(m);
+    }
 }
