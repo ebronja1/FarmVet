@@ -34,4 +34,9 @@ public class VetsManager {
             throw e;
         }
     }
+
+    public Vets update(Vets vet) throws FarmVetException{
+        validateVetsName(vet.getName());
+        return DaoFactory.vetsDao().update(vet);
+    }
 }
