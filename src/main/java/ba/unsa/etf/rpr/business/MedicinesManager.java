@@ -31,4 +31,7 @@ public class MedicinesManager {
         return DaoFactory.medicinesDao().getById(medicineId);
     }
 
+    public void update(Medicines m) throws FarmVetException{
+        DaoFactory.medicinesDao().update(m);
+    }
 }
