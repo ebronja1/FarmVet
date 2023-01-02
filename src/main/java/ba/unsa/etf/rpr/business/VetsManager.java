@@ -39,4 +39,8 @@ public class VetsManager {
         validateVetsName(vet.getName());
         return DaoFactory.vetsDao().update(vet);
     }
+
+    public List<Vets> getAll() throws FarmVetException{
+        return DaoFactory.vetsDao().getAll();
+    }
 }
