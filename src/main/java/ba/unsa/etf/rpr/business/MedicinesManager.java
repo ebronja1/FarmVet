@@ -14,7 +14,14 @@ import java.util.List;
  * @author Emir Bronja
  */
 public class MedicinesManager {
+
     public List<Medicines> getAll() throws FarmVetException {
         return DaoFactory.medicinesDao().getAll();
     }
+
+    public List<Medicines> searchQuotes(String text) throws FarmVetException {
+        return DaoFactory.medicinesDao().searchByText(text);
+    }
+
+
 }
