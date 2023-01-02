@@ -19,7 +19,7 @@ public class MedicinesManager {
         return DaoFactory.medicinesDao().getAll();
     }
 
-    public List<Medicines> searchQuotes(String text) throws FarmVetException {
+    public List<Medicines> searchMedicines(String text) throws FarmVetException {
         return DaoFactory.medicinesDao().searchByText(text);
     }
 
