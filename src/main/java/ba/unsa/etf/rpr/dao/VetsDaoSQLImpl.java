@@ -19,12 +19,16 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
             Vets vet = new Vets();
             vet.setId(rs.getInt("vet_id"));
             vet.setName(rs.getString("name"));
+            vet.setPassword(rs.getString("password"));
             return vet;
         } catch (SQLException e) {
             throw new FarmVetException(e.getMessage(), e);
         }
     }
-
+    @Override
+    public List<Vets> searchByName(String text) throws FarmVetException{
+        return executeQuery("SELECT name FROM vets WHERE name LIKE concat('%', ?, '%')", new Object[]{text});
+    }
     @Override
     public Map<String, Object> object2row(Vets object) {
         Map<String, Object> row = new TreeMap<>();
@@ -32,4 +36,5 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
         row.put("name", object.getName());
         return row;
     }
+
 }
