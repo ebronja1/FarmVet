@@ -9,12 +9,15 @@ public class Vets implements Idable {
     private int id;
     private String name;
 
+    private String password;
+
     public Vets() {
     }
 
-    public Vets(int id, String name) {
+    public Vets(int id, String name, String password) {
         this.id = id;
         this.name = name;
+        this.password = password;
     }
 
     public int getId() {
@@ -48,6 +51,6 @@ public class Vets implements Idable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(id, name, password);
     }
 }

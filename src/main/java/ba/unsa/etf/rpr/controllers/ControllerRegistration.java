@@ -58,8 +58,9 @@ public class ControllerRegistration {
             } else {
                 correct = true;
                 String name = registrationName.getText();
+                String password = registrationPassword.getText();
                 VetsManager vManager = new VetsManager();
-                Vets v = new Vets(0, name);
+                Vets v = new Vets(0, name, password);
                 vManager.add(v);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Status registracije:");
