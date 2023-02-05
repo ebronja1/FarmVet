@@ -11,7 +11,7 @@ public class DaoFactory {
 
     private static final AnimalsDao animalsDao = new AnimalsDaoSQLImpl();
     private static final MedicinesDao medicinesDao = new MedicinesDaoSQLImpl();
-    private static final VetsDao vetsDao = new VetsDaoSQLImpl();
+    private static final VetsDao vetsDao = VetsDaoSQLImpl.getInstance();
 
 
     private DaoFactory() {

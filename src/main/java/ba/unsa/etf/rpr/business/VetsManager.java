@@ -42,4 +42,10 @@ public class VetsManager {
     public List<Vets> getAll() throws FarmVetException{
         return DaoFactory.vetsDao().getAll();
     }
+    public List<Vets> searchByName(String text) throws FarmVetException {
+        return DaoFactory.vetsDao().searchByName(text);
+    }
+    public List<Vets> searchByPassword(String text) throws FarmVetException{
+        return DaoFactory.vetsDao().searchByPassword(text);
+    }
 }

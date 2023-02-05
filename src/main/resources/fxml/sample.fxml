@@ -45,7 +45,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </GridPane.margin>
       </ButtonBar>
-      <ImageView fitHeight="69.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+      <ImageView fitHeight="72.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
          <image>
             <Image url="@../img/CowAndSheepImage.jpg" />
          </image>
@@ -62,7 +62,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="usernameid" alignment="CENTER">
+                  <TextField fx:id="usernameid" alignment="CENTER" promptText="min 3 characters">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -76,7 +76,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <PasswordField alignment="CENTER">
+                  <PasswordField fx:id="loginPasswordField" alignment="CENTER" promptText="min 3 characters">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -85,6 +85,6 @@
             </HBox>
          </children>
       </VBox>
-      <Hyperlink onAction="#actionRegisterLinkClick" prefHeight="9.0" prefWidth="58.0" text="Register?" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <Hyperlink onAction="#actionRegisterLinkClick" prefHeight="24.0" prefWidth="135.0" text="Not registred?" GridPane.columnIndex="2" GridPane.rowIndex="3" />
    </children>
 </GridPane>

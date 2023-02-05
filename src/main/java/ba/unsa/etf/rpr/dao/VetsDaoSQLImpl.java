@@ -8,9 +8,19 @@ import java.sql.*;
 import java.util.*;
 
 public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
-
-    public VetsDaoSQLImpl() {
+    public static VetsDaoSQLImpl instance = null;
+    private VetsDaoSQLImpl() {
         super("vets");
+    }
+    public static VetsDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new VetsDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
     }
 
     @Override

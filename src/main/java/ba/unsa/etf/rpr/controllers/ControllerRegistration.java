@@ -23,7 +23,7 @@ public class ControllerRegistration {
         registrationName.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
-                if (n.trim().length() < 3) {
+                if (n.trim().isEmpty()) {
                     registrationName.getStyleClass().removeAll("poljeJeIspravno");
                     registrationName.getStyleClass().add("poljeNijeIspravno");
                 } else {
