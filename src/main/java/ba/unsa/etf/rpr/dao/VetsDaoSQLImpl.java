@@ -27,7 +27,11 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
     }
     @Override
     public List<Vets> searchByName(String text) throws FarmVetException{
-        return executeQuery("SELECT name FROM vets WHERE name LIKE concat('%', ?, '%')", new Object[]{text});
+        return executeQuery("SELECT * FROM vets WHERE name = ?", new Object[]{text});
+    }
+    @Override
+    public List<Vets> searchByPassword(String text) throws FarmVetException{
+        return executeQuery("SELECT * FROM vets WHERE password = ?", new Object[]{text});
     }
     @Override
     public Map<String, Object> object2row(Vets object) {
