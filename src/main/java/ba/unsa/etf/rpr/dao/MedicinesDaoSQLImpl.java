@@ -15,8 +15,19 @@ import java.util.*;
  * @author Emir Bronja
  */
 public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements MedicinesDao {
-    public MedicinesDaoSQLImpl() {
-        super("medicines");
+    public static MedicinesDaoSQLImpl instance = null;
+    private MedicinesDaoSQLImpl() {
+        super("meidcines");
+    }
+    public static MedicinesDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new MedicinesDaoSQLImpl();
+        return instance;
+    }
+
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
     }
 
     public Medicines row2object(ResultSet rs) throws FarmVetException{
