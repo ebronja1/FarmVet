@@ -17,7 +17,7 @@ import java.util.*;
 public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements MedicinesDao {
     public static MedicinesDaoSQLImpl instance = null;
     private MedicinesDaoSQLImpl() {
-        super("meidcines");
+        super("medicines");
     }
     public static MedicinesDaoSQLImpl getInstance(){
         if(instance==null)
@@ -33,7 +33,7 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
     public Medicines row2object(ResultSet rs) throws FarmVetException{
         try {
             Medicines m = new Medicines();
-            m.setId(rs.getInt("medicine_id"));
+            m.setId(rs.getInt("id"));
             m.setMedicine(rs.getString("name"));
             m.setTaked(rs.getDate("taked"));
             m.setAnimal(DaoFactory.animalsDao().getById(rs.getInt("animal_id")));
@@ -51,7 +51,7 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
     @Override
     public Map<String, Object> object2row(Medicines object) {
         Map<String, Object> item = new TreeMap<>();
-        item.put("medicine_id", object.getId());
+        item.put("id", object.getId());
         item.put("name", object.getMedicine());
         item.put("taked", object.getTaked());
         item.put("animal_id", object.getAnimal().getId());

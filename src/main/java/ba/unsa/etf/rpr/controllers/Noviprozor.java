@@ -1,47 +1,69 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.MedicinesManager;
+import ba.unsa.etf.rpr.domain.Medicines;
+import ba.unsa.etf.rpr.exceptions.FarmVetException;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.commons.compress.archivers.dump.DumpArchiveException;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
 public class Noviprozor {
+    private final MedicinesManager medicinesManager = new MedicinesManager();
     public TextArea textArea;
     public Label statusBar;
+    @FXML
+    public TableView<Medicines> medicinesTable;
+    @FXML
+    public TableColumn<Medicines,String> medicineColumn;
+    @FXML
+    public TableColumn<Medicines,String> animalColumn;
+    @FXML
+    public TableColumn<Medicines, String> takenColumn;
+    @FXML
+    public TableColumn<Medicines,String> vetColumn;
+    private String nameNP;
+
+    public Noviprozor(String nameNP) {
+        this.nameNP = nameNP;
+    }
+    @FXML
+    public void initialize() {
+        medicineColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMedicine()));
+        animalColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAnimal().getName()));
+        takenColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTaked().toString()));
+        vetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVet().getName()));
+        refreshMedicines();
+    }
+
+    private void refreshMedicines(){
+        try{
+            medicinesTable.setItems(FXCollections.observableList(medicinesManager.getAll()));
+            medicinesTable.refresh();
+        }
+        catch(FarmVetException e){
+            new Alert(Alert.AlertType.ERROR,e.getMessage(),ButtonType.OK).showAndWait();
+        }
+    }
 
     public void akcijaKraj(ActionEvent actionEvent) {
         System.exit(0);
-    }
-
-    public void akcijaOpen(ActionEvent actionEvent) {
-        FileChooser izbornik = new FileChooser();
-        izbornik.setTitle("Izaberite datoteku");
-        izbornik.getExtensionFilters().add(new FileChooser.ExtensionFilter("Tekstualna datoteka", "*.txt"));
-        File izabrani = izbornik.showOpenDialog(textArea.getScene().getWindow());
-        if(izabrani == null) return;
-        izbornik.showOpenDialog(textArea.getScene().getWindow());
-        try {
-            String tekst = new String(Files.readAllBytes(izabrani.toPath()));
-            textArea.setText(tekst);
-            statusBar.setText("Datoteka je ucitana!");
-        } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText("Greska");
-            alert.setContentText(e.getMessage());
-            alert.setTitle("Ne mogu da otvorim datoteku");
-            alert.showAndWait();
-        }
     }
 
     public void akcijaOpenNewWindow(ActionEvent actionEvent) throws IOException {

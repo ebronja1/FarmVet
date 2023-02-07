@@ -9,7 +9,7 @@ import java.sql.Connection;
  */
 public class DaoFactory {
 
-    private static final AnimalsDao animalsDao = new AnimalsDaoSQLImpl();
+    private static final AnimalsDao animalsDao = AnimalsDaoSQLImpl.getInstance();
     private static final MedicinesDao medicinesDao = MedicinesDaoSQLImpl.getInstance();
     private static final VetsDao vetsDao = VetsDaoSQLImpl.getInstance();
 

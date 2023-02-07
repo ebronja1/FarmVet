@@ -74,11 +74,10 @@ public class Controller {
             correct = true;
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/Noviprozor.fxml"));
-            Parent root = loader.load();
-            Noviprozor noviprozor = loader.getController();
-            //noviprozor.dobrodosaoButtonid.setText(noviprozor.dobrodosaoButtonid.getText() + usernameid.getText());
+            Noviprozor c = new Noviprozor(usernameid.getText());
+            loader.setController(c);
             stage.setTitle("FarmVet");
-            stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+            stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
         }
     }

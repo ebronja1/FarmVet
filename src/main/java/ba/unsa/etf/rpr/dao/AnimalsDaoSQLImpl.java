@@ -7,15 +7,25 @@ import java.sql.*;
 import java.util.*;
 
 public class AnimalsDaoSQLImpl extends AbstractDao<Animals> implements AnimalsDao {
-    public AnimalsDaoSQLImpl() {
+    public static AnimalsDaoSQLImpl instance = null;
+    private AnimalsDaoSQLImpl() {
         super("animals");
     }
+    public static AnimalsDaoSQLImpl getInstance(){
+        if(instance==null)
+            instance = new AnimalsDaoSQLImpl();
+        return instance;
+    }
 
+    public static void removeInstance(){
+        if(instance!=null)
+            instance=null;
+    }
     @Override
     public Animals row2object(ResultSet rs) throws FarmVetException {
         try {
             Animals animal = new Animals();
-            animal.setId(rs.getInt("animal_id"));
+            animal.setId(rs.getInt("id"));
             animal.setName(rs.getString("name"));
             animal.setKind(rs.getString("kind"));
             return animal;
@@ -27,7 +37,7 @@ public class AnimalsDaoSQLImpl extends AbstractDao<Animals> implements AnimalsDa
     @Override
     public Map<String, Object> object2row(Animals object) {
         Map<String, Object> row = new TreeMap<>();
-        row.put("animal_id", object.getId());
+        row.put("id", object.getId());
         row.put("name", object.getName());
         row.put("kind", object.getKind());
         return row;

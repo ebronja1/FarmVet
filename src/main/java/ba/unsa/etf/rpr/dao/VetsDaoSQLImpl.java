@@ -27,7 +27,7 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
     public Vets row2object(ResultSet rs) throws FarmVetException {
         try {
             Vets vet = new Vets();
-            vet.setId(rs.getInt("vet_id"));
+            vet.setId(rs.getInt("id"));
             vet.setName(rs.getString("name"));
             vet.setPassword(rs.getString("password"));
             return vet;
@@ -46,8 +46,9 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
     @Override
     public Map<String, Object> object2row(Vets object) {
         Map<String, Object> row = new TreeMap<>();
-        row.put("vet_id", object.getId());
+        row.put("id", object.getId());
         row.put("name", object.getName());
+        row.put("password",object.getPassword());
         return row;
     }
 
