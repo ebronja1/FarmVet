@@ -16,6 +16,7 @@ public class ControllerRegistration {
     public Button registrationButton;
     public TextField registrationPassword;
     public TextField registrationName;
+    public TextField username;
 
     @FXML
     public void initialize() {
@@ -45,11 +46,25 @@ public class ControllerRegistration {
                 }
             }
         });
+        username.getStyleClass().add("poljeNijeIspravno");
+        username.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String o, String n) {
+                if (n.trim().length() < 3) {
+                    username.getStyleClass().removeAll("poljeJeIspravno");
+                    username.getStyleClass().add("poljeNijeIspravno");
+                } else {
+                    username.getStyleClass().removeAll("poljeNijeIspravno");
+                    username.getStyleClass().add("poljeJeIspravno");
+                }
+            }
+        });
     }
     public void actionRegistration(ActionEvent actionEvent) throws FarmVetException {
         boolean correct = true;
 
-            if (registrationName.getText().length() < 3 || registrationPassword.getText().length() < 3) {
+            if (registrationName.getText().length() < 3 || registrationPassword.getText().length() < 3 ||
+            username.getText().length() < 3) {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Status registracije:");
                 alert.setContentText("Neuspješna registracija!");
@@ -59,8 +74,9 @@ public class ControllerRegistration {
                 correct = true;
                 String name = registrationName.getText();
                 String password = registrationPassword.getText();
+                String usern = username.getText();
                 VetsManager vManager = new VetsManager();
-                Vets v = new Vets(0, name, password);
+                Vets v = new Vets(0, name, password, usern);
                 vManager.add(v);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Status registracije:");

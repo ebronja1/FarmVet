@@ -62,7 +62,7 @@ public class Noviprozor {
         try{
             VetsManager vm = new VetsManager();
             List<Vets> l = new ArrayList<>();
-            l = vm.searchByName(name);
+            l = vm.searchByUserName(name);
             medicinesTable.setItems(FXCollections.observableList(medicinesManager.searchByVets(l.get(0))));
             medicinesTable.refresh();
         }

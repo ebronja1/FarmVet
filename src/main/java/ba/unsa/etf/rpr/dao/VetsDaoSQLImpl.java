@@ -30,6 +30,7 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
             vet.setId(rs.getInt("id"));
             vet.setName(rs.getString("name"));
             vet.setPassword(rs.getString("password"));
+            vet.setUsername(rs.getString("username"));
             return vet;
         } catch (SQLException e) {
             throw new FarmVetException(e.getMessage(), e);
@@ -38,6 +39,10 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
     @Override
     public List<Vets> searchByName(String text) throws FarmVetException{
         return executeQuery("SELECT * FROM vets WHERE name = ?", new Object[]{text});
+    }
+    @Override
+    public List<Vets> searchByUserName(String text) throws FarmVetException{
+        return executeQuery("SELECT * FROM vets WHERE username = ?", new Object[]{text});
     }
     @Override
     public List<Vets> searchByPassword(String text) throws FarmVetException{
@@ -49,6 +54,7 @@ public class VetsDaoSQLImpl extends AbstractDao<Vets> implements VetsDao {
         row.put("id", object.getId());
         row.put("name", object.getName());
         row.put("password",object.getPassword());
+        row.put("username", object.getUsername());
         return row;
     }
 

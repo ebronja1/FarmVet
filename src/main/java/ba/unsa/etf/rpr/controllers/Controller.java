@@ -60,7 +60,7 @@ public class Controller {
         boolean correct = true;
         VetsManager vm = new VetsManager();
         List<Vets> l1 = new ArrayList<>();
-        l1 = vm.searchByName(usernameid.getText());
+        l1 = vm.searchByUserName(usernameid.getText());
         List<Vets> l2 = new ArrayList<>();
         l2 = vm.searchByPassword(loginPasswordField.getText());
         if (usernameid.getText().length() < 3 || loginPasswordField.getText().length() < 3 ||
