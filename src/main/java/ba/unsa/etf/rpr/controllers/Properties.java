@@ -14,6 +14,9 @@ public class Properties {
     public TextField fldIme;
     public TextField fldPrezime;
     public DatePicker fldDatum;
+    public TextField fldMedicine;
+    public TextField fldAnimalName;
+    public TextField fldKind;
 
     public void actionClose(ActionEvent actionEvent) {
         Stage stage = (Stage)buttonCancelProperties.getScene().getWindow();
@@ -27,7 +30,7 @@ public class Properties {
         boolean sveIspravno = true;
         if(fldIme.getText().isEmpty()) {
             Alert upozorenje = new Alert(Alert.AlertType.ERROR);
-            upozorenje.setTitle("Ime ne moze biti prazno");
+            upozorenje.setTitle("Field name can't be empty");
             upozorenje.showAndWait();
             fldIme.requestFocus();
             fldIme.getStyleClass().removeAll("poljeJeIspravno");
@@ -38,18 +41,44 @@ public class Properties {
             fldIme.getStyleClass().removeAll("poljeNijeeIspravno");
             fldIme.getStyleClass().add("poljeJeIspravno");
         }
-        if(fldPrezime.getText().isEmpty()) {
+        if(fldKind.getText().isEmpty()) {
             Alert upozorenje = new Alert(Alert.AlertType.ERROR);
-            upozorenje.setTitle("Prezime ne moze biti prazno");
+            upozorenje.setTitle("Field Kind can't be empty");
             upozorenje.showAndWait();
-            fldPrezime.requestFocus();
-            fldPrezime.getStyleClass().removeAll("poljeJeIspravno");
-            fldPrezime.getStyleClass().add("poljeNijeIspravno");
+            fldKind.requestFocus();
+            fldKind.getStyleClass().removeAll("poljeJeIspravno");
+            fldKind.getStyleClass().add("poljeNijeIspravno");
             sveIspravno = false;
         }
         else {
-                fldPrezime.getStyleClass().removeAll("poljeNijeeIspravno");
-                fldPrezime.getStyleClass().add("poljeJeIspravno");
+                fldKind.getStyleClass().removeAll("poljeNijeeIspravno");
+                fldKind.getStyleClass().add("poljeJeIspravno");
+        }
+        if(fldAnimalName.getText().isEmpty()) {
+            Alert upozorenje = new Alert(Alert.AlertType.ERROR);
+            upozorenje.setTitle("Field Animal's name can't be empty");
+            upozorenje.showAndWait();
+            fldAnimalName.requestFocus();
+            fldAnimalName.getStyleClass().removeAll("poljeJeIspravno");
+            fldAnimalName.getStyleClass().add("poljeNijeIspravno");
+            sveIspravno = false;
+        }
+        else {
+            fldAnimalName.getStyleClass().removeAll("poljeNijeeIspravno");
+            fldAnimalName.getStyleClass().add("poljeJeIspravno");
+        }
+        if(fldMedicine.getText().isEmpty()) {
+            Alert upozorenje = new Alert(Alert.AlertType.ERROR);
+            upozorenje.setTitle("Field Medicine can't be empty");
+            upozorenje.showAndWait();
+            fldMedicine.requestFocus();
+            fldMedicine.getStyleClass().removeAll("poljeJeIspravno");
+            fldMedicine.getStyleClass().add("poljeNijeIspravno");
+            sveIspravno = false;
+        }
+        else {
+            fldMedicine.getStyleClass().removeAll("poljeNijeeIspravno");
+            fldMedicine.getStyleClass().add("poljeJeIspravno");
         }
         if (fldDatum.getValue() == null) {
             Alert upozorenje = new Alert(Alert.AlertType.ERROR);
@@ -79,5 +108,8 @@ public class Properties {
             fldDatum.getEditor().getStyleClass().add("poljeJeIspravno");
         }
     return sveIspravno;
+    }
+
+    public void addNewAnimal(ActionEvent actionEvent) {
     }
 }

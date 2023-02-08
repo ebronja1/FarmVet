@@ -75,9 +75,8 @@ public class Noviprozor {
         System.exit(0);
     }
     public void deleteRecipe() {
-        MedicinesManager mm = new MedicinesManager();
         try {
-            mm.delete(medicinesTable.getSelectionModel().getSelectedItem().getId());
+            medicinesManager.delete(medicinesTable.getSelectionModel().getSelectedItem().getId());
         }
         catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -92,7 +91,7 @@ public class Noviprozor {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/properties.fxml"));
         Parent root = loader.load();
-        stage.setTitle("Properties");
+        stage.setTitle("Add new recipe");
         stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
         stage.show();
