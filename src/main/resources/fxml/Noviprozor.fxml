@@ -11,9 +11,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToolBar?>
-<?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -22,9 +20,6 @@
     <stylesheets>
         <URL value="@../css/Noviprozor.css" />
     </stylesheets>
-    <center>
-      <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-   </center>
    <top>
       <VBox BorderPane.alignment="CENTER">
          <children>
@@ -32,36 +27,18 @@
               <menus>
                 <Menu text="_File">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                        <MenuItem fx:id="mniNew" text="_New" />
-                        <MenuItem fx:id="mniSave" text="_Save">
-                           <accelerator>
-                              <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
-                           </accelerator>
-                        </MenuItem>
+                    <MenuItem mnemonicParsing="false" text="DeleteRecipe" />
+                        <MenuItem fx:id="mniNew" text="_AddRecipe" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu text="_Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-                  <Menu text="_View">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
               </menus>
             </MenuBar>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
+            <ToolBar prefHeight="45.0" prefWidth="600.0">
               <items>
                 <Button fx:id="tbNew" mnemonicParsing="false" onAction="#akcijaOpenNewWindow" styleClass="tbButton" />
+                  <Separator orientation="VERTICAL" />
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="30.0" text="Button" />
                   <Separator orientation="VERTICAL" />
                   <Separator orientation="VERTICAL" />
                   <Button fx:id="tbExit" mnemonicParsing="false" onAction="#akcijaKraj" styleClass="tbButton" />
@@ -71,9 +48,9 @@
       </VBox>
    </top>
    <bottom>
-      <HBox BorderPane.alignment="CENTER">
+      <HBox prefHeight="28.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="statusBar" text="Aplikacija je pokrenuta">
+            <Label fx:id="statusBar" text="App is runnung...">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
@@ -82,13 +59,42 @@
       </HBox>
    </bottom>
    <left>
-      <TableView fx:id="medicinesTable" prefHeight="307.0" prefWidth="298.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="medicinesTable" prefHeight="232.0" prefWidth="374.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="medicineColumn" prefWidth="75.0" text="Medicine" />
           <TableColumn fx:id="animalColumn" prefWidth="75.0" text="Animal" />
             <TableColumn fx:id="takenColumn" prefWidth="75.0" text="Taken" />
-            <TableColumn fx:id="vetColumn" prefWidth="75.0" text="Vet" />
+            <TableColumn fx:id="vetColumn" prefWidth="146.40003967285156" text="Vet" />
         </columns>
       </TableView>
    </left>
+   <right>
+      <VBox prefHeight="301.0" prefWidth="226.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="28.0" prefWidth="226.0">
+               <children>
+                  <Label prefHeight="39.0" prefWidth="27.0" text="Hi">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="NPusername" prefHeight="38.0" prefWidth="186.0">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <Label prefHeight="22.0" prefWidth="216.0" text="WELCOME TO FARMVET!">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefHeight="26.0" prefWidth="216.0" text="These are your recipces!">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+         </children></VBox>
+   </right>
 </BorderPane>

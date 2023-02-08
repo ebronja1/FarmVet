@@ -1,7 +1,9 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.MedicinesManager;
+import ba.unsa.etf.rpr.business.VetsManager;
 import ba.unsa.etf.rpr.domain.Medicines;
+import ba.unsa.etf.rpr.domain.Vets;
 import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -20,7 +22,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static javafx.scene.control.PopupControl.USE_COMPUTED_SIZE;
 
@@ -28,6 +32,7 @@ public class Noviprozor {
     private final MedicinesManager medicinesManager = new MedicinesManager();
     public TextArea textArea;
     public Label statusBar;
+    public Label NPusername;
     @FXML
     public TableView<Medicines> medicinesTable;
     @FXML
@@ -45,16 +50,20 @@ public class Noviprozor {
     }
     @FXML
     public void initialize() {
+        NPusername.setText(nameNP);
         medicineColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getMedicine()));
         animalColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getAnimal().getName()));
         takenColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTaked().toString()));
         vetColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getVet().getName()));
-        refreshMedicines();
+        refreshMedicines(nameNP);
     }
 
-    private void refreshMedicines(){
+    private void refreshMedicines(String name){
         try{
-            medicinesTable.setItems(FXCollections.observableList(medicinesManager.getAll()));
+            VetsManager vm = new VetsManager();
+            List<Vets> l = new ArrayList<>();
+            l = vm.searchByName(name);
+            medicinesTable.setItems(FXCollections.observableList(medicinesManager.searchByVets(l.get(0))));
             medicinesTable.refresh();
         }
         catch(FarmVetException e){

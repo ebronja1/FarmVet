@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.dao.DaoFactory;
 import ba.unsa.etf.rpr.domain.Medicines;
+import ba.unsa.etf.rpr.domain.Vets;
 import ba.unsa.etf.rpr.exceptions.FarmVetException;
 
 import java.util.List;
@@ -19,7 +20,9 @@ public class MedicinesManager {
     public List<Medicines> searchMedicines(String text) throws FarmVetException {
         return DaoFactory.medicinesDao().searchByText(text);
     }
-
+    public List<Medicines> searchByVets(Vets vet) throws FarmVetException {
+        return DaoFactory.medicinesDao().searchByVets(vet);
+    }
     public void delete(int id) throws FarmVetException{
         DaoFactory.medicinesDao().delete(id);
     }

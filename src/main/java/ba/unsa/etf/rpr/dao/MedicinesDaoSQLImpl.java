@@ -29,7 +29,6 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
         if(instance!=null)
             instance=null;
     }
-
     public Medicines row2object(ResultSet rs) throws FarmVetException{
         try {
             Medicines m = new Medicines();
