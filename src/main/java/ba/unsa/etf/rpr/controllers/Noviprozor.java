@@ -74,7 +74,20 @@ public class Noviprozor {
     public void akcijaKraj(ActionEvent actionEvent) {
         System.exit(0);
     }
-
+    public void deleteRecipe() {
+        MedicinesManager mm = new MedicinesManager();
+        try {
+            mm.delete(medicinesTable.getSelectionModel().getSelectedItem().getId());
+        }
+        catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Unsuccessfull delete:");
+            alert.setContentText("You didn't select a recipe!");
+            alert.showAndWait();
+        };
+        medicinesTable.getItems().remove(medicinesTable.getSelectionModel().getSelectedItem());
+        medicinesTable.refresh();
+    }
     public void akcijaOpenNewWindow(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/properties.fxml"));
