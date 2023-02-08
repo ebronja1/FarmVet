@@ -79,6 +79,8 @@ public class Controller {
             stage.setTitle("FarmVet");
             stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
             stage.show();
+            Stage s1 = (Stage) usernameid.getScene().getWindow();
+            s1.close();
         }
     }
 

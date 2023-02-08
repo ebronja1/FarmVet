@@ -1,30 +1,75 @@
 package ba.unsa.etf.rpr.controllers;
 
 import ba.unsa.etf.rpr.business.AnimalsManager;
+import ba.unsa.etf.rpr.business.MedicinesManager;
+import ba.unsa.etf.rpr.business.VetsManager;
 import ba.unsa.etf.rpr.domain.Animals;
+import ba.unsa.etf.rpr.domain.Medicines;
+import ba.unsa.etf.rpr.domain.Vets;
 import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Properties {
     public Button buttonCancelProperties;
     public TextField fldIme;
-    public TextField fldPrezime;
     public DatePicker fldDatum;
     public TextField fldMedicine;
     public TextField fldAnimalName;
     public TextField fldKind;
-
+    private Animals animal;
+    private Medicines m = new Medicines();
     public void actionClose(ActionEvent actionEvent) {
         Stage stage = (Stage)buttonCancelProperties.getScene().getWindow();
         stage.close();
     }
 
-    public void actionSubmit(ActionEvent actionEvent) {
+    public void actionSubmit(ActionEvent actionEvent) throws FarmVetException {
         if (!validiraj()) return;
+        m.setMedicine(fldMedicine.getText());
+        if (animal == null) {
+            AnimalsManager am = new AnimalsManager();
+            List<Animals> l = new ArrayList<>();
+            l = am.searchByName(fldAnimalName.getText());
+            am = null;
+            animal =  l.get(0);
+        }
+        m.setAnimal(animal);
+        VetsManager vm = new VetsManager();
+        List<Vets> l = new ArrayList<>();
+        try {
+            l = vm.searchByName(fldIme.getText());
+        } catch (FarmVetException e) {
+            Alert upozorenje = new Alert(Alert.AlertType.ERROR);
+            upozorenje.setTitle("Wrong name");
+            upozorenje.showAndWait();
+        }
+        Vets vet = l.get(0);
+        vm = null;
+        m.setVet(vet);
+        Date date = new Date();
+        ZoneId defaultZoneId = ZoneId.systemDefault();
+        m.setTaked(date.from(fldDatum.getValue().atStartOfDay(defaultZoneId).toInstant()));
+        m.setId(0);
+        MedicinesManager mm = new MedicinesManager();
+        try {
+            mm.add(m);
+        } catch (FarmVetException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage(),ButtonType.OK).showAndWait();
+        }
+        mm = null;
+        Stage s1 = (Stage) fldMedicine.getScene().getWindow();
+        s1.close();
+    }
+    public Medicines returnMedicines() {
+        return m;
     }
     private boolean validiraj() {
         boolean sveIspravno = true;
@@ -111,7 +156,7 @@ public class Properties {
     }
 
     public void addNewAnimal(ActionEvent actionEvent) {
-        Animals animal = new Animals();
+        animal = new Animals();
         animal.setId(0);
         animal.setName(fldAnimalName.getText());
         animal.setKind(fldKind.getText());

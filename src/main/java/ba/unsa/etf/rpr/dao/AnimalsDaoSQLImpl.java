@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr.dao;
 
 import ba.unsa.etf.rpr.domain.Animals;
+import ba.unsa.etf.rpr.domain.Vets;
 import ba.unsa.etf.rpr.exceptions.FarmVetException;
 
 import java.sql.*;
@@ -20,6 +21,10 @@ public class AnimalsDaoSQLImpl extends AbstractDao<Animals> implements AnimalsDa
     public static void removeInstance(){
         if(instance!=null)
             instance=null;
+    }
+    @Override
+    public List<Animals> searchByName(String text) throws FarmVetException{
+        return executeQuery("SELECT * FROM animals WHERE name = ?", new Object[]{text});
     }
     @Override
     public Animals row2object(ResultSet rs) throws FarmVetException {

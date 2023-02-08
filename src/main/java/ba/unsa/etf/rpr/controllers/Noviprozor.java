@@ -90,10 +90,16 @@ public class Noviprozor {
     public void akcijaOpenNewWindow(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/properties.fxml"));
-        Parent root = loader.load();
+        Properties c = new Properties();
+        loader.setController(c);
         stage.setTitle("Add new recipe");
-        stage.setScene(new Scene(root, USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
+        stage.setScene(new Scene(loader.load(), USE_COMPUTED_SIZE, USE_COMPUTED_SIZE));
         stage.setResizable(false);
         stage.show();
+        stage.setOnHiding(x -> {
+            Medicines m = c.returnMedicines();
+            medicinesTable.getItems().add(m);
+            medicinesTable.refresh();
+        });
     }
 }
