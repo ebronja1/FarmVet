@@ -1,10 +1,10 @@
 package ba.unsa.etf.rpr.controllers;
 
+import ba.unsa.etf.rpr.business.AnimalsManager;
+import ba.unsa.etf.rpr.domain.Animals;
+import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
@@ -104,12 +104,23 @@ public class Properties {
             sveIspravno = false;
         }
         else {
-            fldDatum.getEditor().getStyleClass().removeAll("poljeNijeeIspravno");
+            fldDatum.getEditor().getStyleClass().removeAll("poljeNijeIspravno");
             fldDatum.getEditor().getStyleClass().add("poljeJeIspravno");
         }
     return sveIspravno;
     }
 
     public void addNewAnimal(ActionEvent actionEvent) {
+        Animals animal = new Animals();
+        animal.setId(0);
+        animal.setName(fldAnimalName.getText());
+        animal.setKind(fldKind.getText());
+        AnimalsManager am = new AnimalsManager();
+        try {
+            am.add(animal);
+        } catch (FarmVetException e) {
+            new Alert(Alert.AlertType.ERROR,e.getMessage(), ButtonType.OK).showAndWait();
+        }
+        am = null;
     }
 }
