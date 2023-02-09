@@ -18,6 +18,12 @@ import java.util.stream.Stream;
  *
  */
 public class App {
+
+    private static final Option addMedcine = new Option("m","add-medicine",false, "Adding new medicine to FarmVet database");
+    private static final Option addAnimal = new Option("a","add-animal",false, "Adding new animal to FarmVet database");
+    private static final Option getMedicines = new Option("getM", "get-medicines",false, "Printing all medicines from FarmVet database");
+    private static final Option getAnimals = new Option("getA", "get-animals",false, "Printing all animals from FarmVet database");
+    private static final Option animalDefinition = new Option(null, "animal",false, "Defining animal for next added medicine");
     /**
      * @param options
      */
