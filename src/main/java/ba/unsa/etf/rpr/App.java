@@ -1,6 +1,7 @@
 package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.business.AnimalsManager;
 import ba.unsa.etf.rpr.business.MedicinesManager;
+import ba.unsa.etf.rpr.business.VetsManager;
 import ba.unsa.etf.rpr.domain.Animals;
 import ba.unsa.etf.rpr.domain.Medicines;
 import ba.unsa.etf.rpr.domain.Vets;
@@ -84,11 +85,20 @@ public class App {
             try {
                 animal = searchThroughAnimals(animalsManager.getAll(), cl.getArgList().get(1));
             } catch (Exception e) {
-                System.out.println("There is no category in the list! Try again.");
+                System.out.println("There is no animal in the list! Try again.");
+                System.exit(1);
+            }
+            VetsManager vetsManager = new VetsManager();
+            Vets vet = null;
+            try {
+                 vet = searchThroughVets(vetsManager.getAll(), cl.getArgList().get(1));
+            } catch (Exception e) {
+                System.out.println("There is no vet in the list! Try again.");
                 System.exit(1);
             }
             Medicines medicine = new Medicines();
             medicine.setAnimal(animal);
+            medicine.setVet(vet);
             medicine.setMedicine(cl.getArgList().get(0));
             medicine.setTaked(Date.valueOf(LocalDate.now()));
             medicinesManager.add(medicine);
