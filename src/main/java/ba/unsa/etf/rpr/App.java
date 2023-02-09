@@ -141,6 +141,10 @@ public class App {
             VetsManager vetsManager = new VetsManager();
             vetsManager.getAll().forEach(c -> System.out.println(c.getName()));
 
+        } else {
+            printFormattedOptions(options);
+            System.exit(-1);
+//                break;
         }
     }
 }
