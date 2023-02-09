@@ -19,9 +19,7 @@ import java.util.stream.Stream;
  */
 public class App {
     /**
-     *
      * @param options
-     *
      */
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
@@ -29,5 +27,8 @@ public class App {
         helpFormatter.printUsage(printWriter, 150, "java -jar quote-maker.jar [option] 'something else if needed' ");
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
+    }
+
+    public static void main(String[] args) {
     }
 }
