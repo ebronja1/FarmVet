@@ -34,6 +34,15 @@ public class App {
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
     }
+    public static Options addOptions() {
+        Options options = new Options();
+        options.addOption(addMedcine);
+        options.addOption(addAnimal);
+        options.addOption(getMedicines);
+        options.addOption(getAnimals);
+        options.addOption(animalDefinition);
+        return options;
+    }
 
     public static void main(String[] args) {
     }
