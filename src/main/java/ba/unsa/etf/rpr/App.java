@@ -107,7 +107,7 @@ public class App {
             MedicinesManager medicinesManager = new MedicinesManager();
             medicinesManager.getAll().forEach(q -> System.out.println(q.getMedicine()));
 
-        } else if(cl.hasOption(addAnimal.getOpt()) || cl.hasOption(addAnimal.getLongOpt())) {
+        } else if (cl.hasOption(addAnimal.getOpt()) || cl.hasOption(addAnimal.getLongOpt())) {
             try {
                 AnimalsManager animalsManager = new AnimalsManager();
                 Animals animal = new Animals();
@@ -119,26 +119,29 @@ public class App {
                 System.out.println("There is already animal with same name in database! Try again");
                 System.exit(1);
             }
-        } else if(cl.hasOption(getAnimals.getOpt()) || cl.hasOption(getAnimals.getLongOpt())){
+        } else if (cl.hasOption(getAnimals.getOpt()) || cl.hasOption(getAnimals.getLongOpt())) {
             AnimalsManager animalsManager = new AnimalsManager();
             animalsManager.getAll().forEach(c -> System.out.println(c.getName()));
 
-        }else if(cl.hasOption(addVet.getOpt()) || cl.hasOption(addVet.getLongOpt()))
+        } else if (cl.hasOption(addVet.getOpt()) || cl.hasOption(addVet.getLongOpt())) {
+            try {
+                VetsManager vetsManager = new VetsManager();
+                Vets vet = new Vets();
+                vet.setName(cl.getArgList().get(0));
+                vet.setPassword(cl.getArgList().get(1));
+                vet.setUsername(cl.getArgList().get(1));
+                vetsManager.add(vet);
+                System.out.println("Vet has been added successfully");
+            } catch (Exception e) {
+                System.out.println("There is already vet with same name in database! Try again");
+                System.exit(1);
+            }
 
-    {
-        try {
+        } else if (cl.hasOption(getVets.getOpt()) || cl.hasOption(getVets.getLongOpt())) {
             VetsManager vetsManager = new VetsManager();
-            Vets vet = new Vets();
-            vet.setName(cl.getArgList().get(0));
-            vet.setPassword(cl.getArgList().get(1));
-            vet.setUsername(cl.getArgList().get(1));
-            vetsManager.add(vet);
-            System.out.println("Vet has been added successfully");
-        } catch (Exception e) {
-            System.out.println("There is already vet with same name in database! Try again");
-            System.exit(1);
+            vetsManager.getAll().forEach(c -> System.out.println(c.getName()));
+
         }
-    }
     }
 }
 
