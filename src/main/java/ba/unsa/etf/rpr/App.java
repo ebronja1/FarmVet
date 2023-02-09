@@ -39,7 +39,7 @@ public class App {
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
         PrintWriter printWriter = new PrintWriter(System.out);
-        helpFormatter.printUsage(printWriter, 150, "java -jar quote-maker.jar [option] 'something else if needed' ");
+        helpFormatter.printUsage(printWriter, 150, "java -jar FarmVet.jar [option] 'something else if needed' ");
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
     }
