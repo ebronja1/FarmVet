@@ -77,7 +77,6 @@ public class App {
 
         CommandLine cl = commandLineParser.parse(options, args);
 
-//        while(true) {
         if ((cl.hasOption(addMedcine.getOpt()) || cl.hasOption(addMedcine.getLongOpt())) && cl.hasOption((animalDefinition.getLongOpt()))) {
             MedicinesManager medicinesManager = new MedicinesManager();
             AnimalsManager animalsManager = new AnimalsManager();
@@ -91,7 +90,7 @@ public class App {
             VetsManager vetsManager = new VetsManager();
             Vets vet = null;
             try {
-                vet = searchThroughVets(vetsManager.getAll(), cl.getArgList().get(1));
+                vet = searchThroughVets(vetsManager.getAll(), cl.getArgList().get(2));
             } catch (Exception e) {
                 System.out.println("There is no vet in the list! Try again.");
                 System.exit(1);
@@ -107,6 +106,19 @@ public class App {
         } else if (cl.hasOption(getMedicines.getOpt()) || cl.hasOption(getMedicines.getLongOpt())) {
             MedicinesManager medicinesManager = new MedicinesManager();
             medicinesManager.getAll().forEach(q -> System.out.println(q.getMedicine()));
+
+        } else if(cl.hasOption(addAnimal.getOpt()) || cl.hasOption(addAnimal.getLongOpt())) {
+            try {
+                AnimalsManager animalsManager = new AnimalsManager();
+                Animals animal = new Animals();
+                animal.setName(cl.getArgList().get(0));
+                animal.setKind(cl.getArgList().get(1));
+                animalsManager.add(animal);
+                System.out.println("Animal has been added successfully");
+            } catch (Exception e) {
+                System.out.println("There is already animal with same name in database! Try again");
+                System.exit(1);
+            }
         }
     }
 }
