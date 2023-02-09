@@ -119,6 +119,12 @@ public class App {
                 System.out.println("There is already animal with same name in database! Try again");
                 System.exit(1);
             }
+        } else if(cl.hasOption(getAnimals.getOpt()) || cl.hasOption(getAnimals.getLongOpt())){
+            AnimalsManager animalsManager = new AnimalsManager();
+            animalsManager.getAll().forEach(c -> System.out.println(c.getName()));
+        } else {
+            printFormattedOptions(options);
+            System.exit(-1);
         }
     }
 }
