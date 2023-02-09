@@ -91,7 +91,7 @@ public class App {
             VetsManager vetsManager = new VetsManager();
             Vets vet = null;
             try {
-                 vet = searchThroughVets(vetsManager.getAll(), cl.getArgList().get(1));
+                vet = searchThroughVets(vetsManager.getAll(), cl.getArgList().get(1));
             } catch (Exception e) {
                 System.out.println("There is no vet in the list! Try again.");
                 System.exit(1);
@@ -102,7 +102,11 @@ public class App {
             medicine.setMedicine(cl.getArgList().get(0));
             medicine.setTaked(Date.valueOf(LocalDate.now()));
             medicinesManager.add(medicine);
-            System.out.println("You successfully added quote to database!");
+            System.out.println("You successfully added medicine to database!");
+
+        } else if (cl.hasOption(getMedicines.getOpt()) || cl.hasOption(getMedicines.getLongOpt())) {
+            MedicinesManager medicinesManager = new MedicinesManager();
+            medicinesManager.getAll().forEach(q -> System.out.println(q.getMedicine()));
         }
     }
 }
