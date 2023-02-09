@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr;
 import ba.unsa.etf.rpr.business.AnimalsManager;
 import ba.unsa.etf.rpr.business.MedicinesManager;
 import ba.unsa.etf.rpr.domain.Animals;
+import ba.unsa.etf.rpr.domain.Medicines;
 import net.bytebuddy.asm.Advice;
 import org.apache.commons.cli.*;
 import java.sql.Date;
@@ -27,6 +28,9 @@ public class App {
     private static final Option getMedicines = new Option("getM", "get-medicines",false, "Printing all medicines from FarmVet database");
     private static final Option getAnimals = new Option("getA", "get-animals",false, "Printing all animals from FarmVet database");
     private static final Option animalDefinition = new Option(null, "animal",false, "Defining animal for next added medicine");
+    private static final Option addVet = new Option("a","add-vet",false, "Adding new vet to FarmVet database");
+    private static final Option getVets = new Option("getV", "get-vets",false, "Printing all vets from FarmVet database");
+    private static final Option vetDefinition = new Option(null, "vet",false, "Defining vet for next added medicine");
     /**
      * @param options
      */
@@ -44,6 +48,9 @@ public class App {
         options.addOption(getMedicines);
         options.addOption(getAnimals);
         options.addOption(animalDefinition);
+        options.addOption(addVet);
+        options.addOption(getVets);
+        options.addOption(vetDefinition);
         return options;
     }
 
@@ -72,6 +79,12 @@ public class App {
                 System.out.println("There is no category in the list! Try again.");
                 System.exit(1);
             }
+            Medicines medicine = new Medicines();
+            medicine.setAnimal(animal);
+            medicine.setMedicine(cl.getArgList().get(0));
+            medicine.setTaked(Date.valueOf(LocalDate.now()));
+            medicinesManager.add(medicine);
+            System.out.println("You successfully added quote to database!");
         }
     }
 }
