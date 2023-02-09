@@ -1,4 +1,5 @@
 package ba.unsa.etf.rpr;
+import ba.unsa.etf.rpr.domain.Animals;
 import net.bytebuddy.asm.Advice;
 import org.apache.commons.cli.*;
 import java.sql.Date;
@@ -44,6 +45,13 @@ public class App {
         return options;
     }
 
+    public static Animals searchThroughAnimals(List<Animals> listOfAnimals, String animalsName) {
+
+        Animals animal = null;
+        animal = listOfAnimals.stream().filter(an -> an.getName().toLowerCase().equals(animalsName.toLowerCase())).findAny().get();
+        return animal;
+
+    }
     public static void main(String[] args) {
     }
 }
