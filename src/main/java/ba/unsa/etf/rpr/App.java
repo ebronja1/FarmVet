@@ -1,4 +1,6 @@
 package ba.unsa.etf.rpr;
+import ba.unsa.etf.rpr.business.AnimalsManager;
+import ba.unsa.etf.rpr.business.MedicinesManager;
 import ba.unsa.etf.rpr.domain.Animals;
 import net.bytebuddy.asm.Advice;
 import org.apache.commons.cli.*;
@@ -52,6 +54,25 @@ public class App {
         return animal;
 
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        Options options = addOptions();
+
+        CommandLineParser commandLineParser = new DefaultParser();
+
+        CommandLine cl = commandLineParser.parse(options, args);
+
+//        while(true) {
+        if ((cl.hasOption(addMedcine.getOpt()) || cl.hasOption(addMedcine.getLongOpt())) && cl.hasOption((animalDefinition.getLongOpt()))) {
+            MedicinesManager medicinesManager = new MedicinesManager();
+            AnimalsManager animalsManager = new AnimalsManager();
+            Animals animal = null;
+            try {
+                animal = searchThroughAnimals(animalsManager.getAll(), cl.getArgList().get(1));
+            } catch (Exception e) {
+                System.out.println("There is no category in the list! Try again.");
+                System.exit(1);
+            }
+        }
     }
 }
+
