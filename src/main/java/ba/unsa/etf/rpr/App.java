@@ -3,6 +3,7 @@ import ba.unsa.etf.rpr.business.AnimalsManager;
 import ba.unsa.etf.rpr.business.MedicinesManager;
 import ba.unsa.etf.rpr.domain.Animals;
 import ba.unsa.etf.rpr.domain.Medicines;
+import ba.unsa.etf.rpr.domain.Vets;
 import net.bytebuddy.asm.Advice;
 import org.apache.commons.cli.*;
 import java.sql.Date;
@@ -59,6 +60,13 @@ public class App {
         Animals animal = null;
         animal = listOfAnimals.stream().filter(an -> an.getName().toLowerCase().equals(animalsName.toLowerCase())).findAny().get();
         return animal;
+
+    }
+    public static Vets searchThroughVets(List<Vets> listOfVets, String vetsName) {
+
+        Vets vet = null;
+        vet = listOfVets.stream().filter(an -> an.getName().toLowerCase().equals(vetsName.toLowerCase())).findAny().get();
+        return vet;
 
     }
     public static void main(String[] args) throws Exception {
