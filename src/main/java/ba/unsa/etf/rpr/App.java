@@ -55,7 +55,6 @@ public class App {
         options.addOption(vetDefinition);
         return options;
     }
-
     public static Animals searchThroughAnimals(List<Animals> listOfAnimals, String animalsName) {
 
         Animals animal = null;
@@ -70,6 +69,11 @@ public class App {
         return vet;
 
     }
+    /**
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         Options options = addOptions();
 
