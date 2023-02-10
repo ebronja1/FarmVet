@@ -25,12 +25,12 @@ import java.util.stream.Stream;
  */
 public class App {
 
-    private static final Option addMedcine = new Option("m","add-medicine",false, "Adding new medicine to FarmVet database");
-    private static final Option addAnimal = new Option("a","add-animal",false, "Adding new animal to FarmVet database");
+    private static final Option addMedcine = new Option("m","add-medicine",false, "Adding new medicine to FarmVet database, add arguments: medicine, animal and vet");
+    private static final Option addAnimal = new Option("a","add-animal",false, "Adding new animal to FarmVet database,add argument: animal's name");
     private static final Option getMedicines = new Option("getM", "get-medicines",false, "Printing all medicines from FarmVet database");
     private static final Option getAnimals = new Option("getA", "get-animals",false, "Printing all animals from FarmVet database");
     private static final Option animalDefinition = new Option(null, "animal",false, "Defining animal for next added medicine");
-    private static final Option addVet = new Option("a","add-vet",false, "Adding new vet to FarmVet database");
+    private static final Option addVet = new Option("v","add-vet",false, "Adding new vet to FarmVet database,add arguments:name, password and username");
     private static final Option getVets = new Option("getV", "get-vets",false, "Printing all vets from FarmVet database");
     private static final Option vetDefinition = new Option(null, "vet",false, "Defining vet for next added medicine");
     /**
@@ -39,7 +39,7 @@ public class App {
     public static void printFormattedOptions(Options options) {
         HelpFormatter helpFormatter = new HelpFormatter();
         PrintWriter printWriter = new PrintWriter(System.out);
-        helpFormatter.printUsage(printWriter, 150, "java -jar FarmVet.jar [option] 'something else if needed' ");
+        helpFormatter.printUsage(printWriter, 150, "java -jar FarmVet-cli-jar-with-dependencies.jar [option] 'arguments if needed' ");
         helpFormatter.printOptions(printWriter, 150, options, 2, 7);
         printWriter.close();
     }
@@ -77,7 +77,7 @@ public class App {
 
         CommandLine cl = commandLineParser.parse(options, args);
 
-        if ((cl.hasOption(addMedcine.getOpt()) || cl.hasOption(addMedcine.getLongOpt())) && cl.hasOption((animalDefinition.getLongOpt()))) {
+        if ((cl.hasOption(addMedcine.getOpt()) || cl.hasOption(addMedcine.getLongOpt()))) {
             MedicinesManager medicinesManager = new MedicinesManager();
             AnimalsManager animalsManager = new AnimalsManager();
             Animals animal = null;
@@ -129,7 +129,7 @@ public class App {
                 Vets vet = new Vets();
                 vet.setName(cl.getArgList().get(0));
                 vet.setPassword(cl.getArgList().get(1));
-                vet.setUsername(cl.getArgList().get(1));
+                vet.setUsername(cl.getArgList().get(2));
                 vetsManager.add(vet);
                 System.out.println("Vet has been added successfully");
             } catch (Exception e) {

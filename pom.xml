@@ -20,12 +20,12 @@
     <dependency>
       <groupId>commons-cli</groupId>
       <artifactId>commons-cli</artifactId>
-      <version>1.5.0</version>
+      <version>1.3.1</version>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.9.0</version>
+      <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
 
@@ -77,11 +77,6 @@
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.12.0</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-validator</groupId>
-      <artifactId>commons-validator</artifactId>
-      <version>1.7</version>
     </dependency>
 
     <!-- we need this dependency for mocking static methods-->
@@ -150,9 +145,6 @@
     </profile>
     <profile>
       <id>cli-app</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
       <build>
         <finalName>${project.name}-cli</finalName>
         <plugins>
@@ -167,7 +159,7 @@
               <archive>
                 <manifest>
                   <addClasspath>true</addClasspath>
-                  <mainClass>ba.unsa.etf.rpr.AppFX</mainClass>
+                  <mainClass>ba.unsa.etf.rpr.App</mainClass>
                 </manifest>
               </archive>
             </configuration>
