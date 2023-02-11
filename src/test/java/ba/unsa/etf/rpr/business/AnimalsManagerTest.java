@@ -4,7 +4,11 @@ import ba.unsa.etf.rpr.domain.Animals;
 import ba.unsa.etf.rpr.exceptions.FarmVetException;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AnimalsManagerTest {
     AnimalsManager animalsManager = new AnimalsManager();
@@ -24,5 +28,28 @@ public class AnimalsManagerTest {
         assertThrows(FarmVetException.class, ()->{
            animalsManager.add(animal);
         });
+    }
+    @Test
+    void TestAddingNewAnimal() {
+        Animals animal =  new Animals();
+        animal.setId(0);
+        animal.setKind("rabbit");
+        animal.setName("Zeko");
+        boolean addingsuccessfull = false;
+        try {
+            animalsManager.add(animal);
+            List<Animals> l = new ArrayList<>();
+            l = animalsManager.getAll();
+            for (Animals x: l) {
+                if (x.getName().equals("Zeko")) {
+                    addingsuccessfull = true;
+                    animalsManager.delete(x.getId());
+                    break;
+                }
+            }
+        } catch (FarmVetException e) {
+            throw new RuntimeException(e);
+        }
+        assertTrue(addingsuccessfull);
     }
 }
