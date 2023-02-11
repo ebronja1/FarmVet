@@ -57,5 +57,34 @@ public class AnimalsManagerTest {
             animalsManager.getAll();
         });
     }
+    @Test
+    void TestDeleteMethod() {
+        Animals animal =  new Animals();
+        animal.setId(0);
+        animal.setKind("rabbit");
+        animal.setName("Zeko");
+        boolean deletesuccessfull = true;
+        try {
+            animalsManager.add(animal);
+            List<Animals> l = new ArrayList<>();
+            l = animalsManager.getAll();
+            for (Animals x: l) {
+                if (x.getName().equals("Zeko")) {
+                    animalsManager.delete(x.getId());
+                    break;
+                }
+            }
+            l = animalsManager.getAll();
+            for (Animals x: l) {
+                if (x.getName().equals("Zeko")) {
+                    deletesuccessfull = false;
+                    break;
+                }
+            }
+        } catch (FarmVetException e) {
+            throw new RuntimeException(e);
+        }
 
+        assertTrue(deletesuccessfull);
+    }
 }
