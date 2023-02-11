@@ -18,4 +18,11 @@ public class AnimalsManagerTest {
            animalsManager.add(animal);
         });
     }
+    @Test
+    void TestAddingWithoutParams() {
+        Animals animal = new Animals();
+        assertThrows(FarmVetException.class, ()->{
+           animalsManager.add(animal);
+        });
+    }
 }
