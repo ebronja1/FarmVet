@@ -87,4 +87,10 @@ public class AnimalsManagerTest {
 
         assertTrue(deletesuccessfull);
     }
+    @Test
+    void TestOfValidateAnimalsName() {
+        assertThrows(FarmVetException.class, ()-> {
+           animalsManager.validateAnimalsName("Po");
+        });
+    }
 }
