@@ -12,21 +12,27 @@ import static org.mockito.Mockito.verify;
 
 public class AnimalsDaoTest {
 
-        private AnimalsManager animalsManager;
-        @Mock
-        private AnimalsDao animalsDao;
+    private AnimalsManager animalsManager;
+    @Mock
+    private AnimalsDao animalsDao;
 
-        public Animals animal = new Animals(0, "Fifi", "dog");
+    public Animals animal = new Animals(0, "Fifi", "dog");
 
 
-        @BeforeEach
-        public void setUp() {
-            MockitoAnnotations.openMocks(this);
-            animalsManager = new AnimalsManager();
-        }
-        @Test
-        public void addTest() throws FarmVetException {
-            animalsDao.add(animal);
-            verify(animalsDao).add(animal);
-        }
+    @BeforeEach
+    public void setUp() {
+        MockitoAnnotations.openMocks(this);
+        animalsManager = new AnimalsManager();
     }
+    @Test
+    public void addTest() throws FarmVetException {
+        animalsDao.add(animal);
+        verify(animalsDao).add(animal);
+    }
+    @Test
+    void updateTest() throws Exception {
+        animal.setName("Mocky the dog");
+        animalsDao.update(animal);
+        verify(animalsDao).update(animal);
+    }
+}
