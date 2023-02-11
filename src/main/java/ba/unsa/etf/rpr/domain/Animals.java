@@ -10,6 +10,15 @@ public class Animals implements Idable{
     private String name;
     private String kind;
 
+    public Animals() {
+    }
+
+    public Animals(int id, String name, String kind) {
+        this.id = id;
+        this.name = name;
+        this.kind = kind;
+    }
+
     public int getId() {
         return id;
     }
