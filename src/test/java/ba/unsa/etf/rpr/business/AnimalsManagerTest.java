@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AnimalsManagerTest {
     AnimalsManager animalsManager = new AnimalsManager();
@@ -52,4 +51,11 @@ public class AnimalsManagerTest {
         }
         assertTrue(addingsuccessfull);
     }
+    @Test
+    void TestGetAllMethod() {
+        assertDoesNotThrow(()-> {
+            animalsManager.getAll();
+        });
+    }
+
 }
