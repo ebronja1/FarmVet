@@ -13,7 +13,7 @@ public class AnimalsManagerTest {
     AnimalsManager animalsManager = new AnimalsManager();
 
     @Test
-    void TestAddingWithId() {
+    void TestAddingAnimalWithId() {
         Animals animal = new Animals();
         animal.setName("Kiki");
         animal.setKind("Cat");
