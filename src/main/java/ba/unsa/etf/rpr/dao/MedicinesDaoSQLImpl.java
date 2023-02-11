@@ -90,18 +90,4 @@ public class MedicinesDaoSQLImpl extends AbstractDao<Medicines> implements Medic
     public List<Medicines> searchByVets(Vets vet) throws FarmVetException{
         return executeQuery("SELECT * FROM medicines WHERE vet_id = ?", new Object[]{vet.getId()});
     }
-    @Override
-    public boolean tooOcuppiedVet(Vets vet) throws FarmVetException {
-        List<Medicines> l = new ArrayList<>();
-        l = this.searchByVets(vet);
-        if (l.size() > 3) return true;
-        return false;
-    }
-    @Override
-    public boolean tooSickAnimal(Animals animal) throws FarmVetException {
-        List<Medicines> l = new ArrayList<>();
-        l = this.searchByAnimals(animal);
-        if (l.size() > 3) return true;
-        return false;
-    }
 }

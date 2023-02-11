@@ -31,6 +31,4 @@ public interface MedicinesDao extends Dao<Medicines> {
     List<Medicines> searchByVets(Vets vet) throws FarmVetException;
 
     List<Medicines> searchByText(String text) throws FarmVetException;
-    boolean tooOcuppiedVet(Vets vet) throws FarmVetException;
-    public boolean tooSickAnimal(Animals animal) throws FarmVetException;
 }
