@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.business;
 import ba.unsa.etf.rpr.dao.DaoFactory;
+import ba.unsa.etf.rpr.domain.Animals;
 import ba.unsa.etf.rpr.domain.Medicines;
 import ba.unsa.etf.rpr.domain.Vets;
 import ba.unsa.etf.rpr.exceptions.FarmVetException;
@@ -37,5 +38,11 @@ public class MedicinesManager {
 
     public Medicines add(Medicines m) throws FarmVetException{
         return DaoFactory.medicinesDao().add(m);
+    }
+    public boolean tooOcuppiedVet(Vets vet) throws FarmVetException {
+        return DaoFactory.medicinesDao().tooOcuppiedVet(vet);
+    }
+    public boolean tooSickAnimal(Animals animal) throws FarmVetException {
+        return DaoFactory.medicinesDao().tooSickAnimal(animal);
     }
 }
