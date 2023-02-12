@@ -1,3 +1,6 @@
+// all tests pass, but here the tests are connected to the database, so I won't consider these,
+// because when downloading the dump database, it won't have all the data as with the current state of my database.
+/*
 package ba.unsa.etf.rpr.business;
 
 import ba.unsa.etf.rpr.domain.Animals;
@@ -119,3 +122,4 @@ public class AnimalsManagerTest {
         assertTrue(searchsuccessfull);
     }
 }
+*/
